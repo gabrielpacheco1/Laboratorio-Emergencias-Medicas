@@ -15,6 +15,10 @@ public class Emergencias_Medicas {
         UIPrincipal principal = new UIPrincipal();
         principal.setVisible(true);
         
+        
+        System.out.println("\n");
+        System.out.println("hola");
+
     }
     
 }
