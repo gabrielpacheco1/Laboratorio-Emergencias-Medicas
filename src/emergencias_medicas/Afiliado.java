@@ -4,6 +4,7 @@ package emergencias_medicas;
 
 public class Afiliado {
 
+
     
     private String nombre;
     private String apellido;
@@ -157,5 +158,4 @@ public class Afiliado {
     
     
     
-
 }
