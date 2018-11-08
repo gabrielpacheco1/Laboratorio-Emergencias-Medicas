@@ -2,7 +2,7 @@
 package emergencias_medicas;
 
 public class Solicitud_Asistencia {
-    private Paciente paciente;
+    private Afiliado paciente;
     private Movil movil;
     private Chofer chofer;
     private Doctor doctor;
@@ -10,6 +10,12 @@ public class Solicitud_Asistencia {
     private Resultado resultado;
     private String fecha;
     private String hora;
+    
+    
+    
+    
+    
+    
 
     /**
      * @return the movil

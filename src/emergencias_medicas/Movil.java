@@ -1,11 +1,21 @@
 
 package emergencias_medicas;
 
-class Movil {
+public class Movil {
     private String marca;
     private String modelo;
-    private int año;
+    private Integer año;
     private String patente;
+    
+    
+    
+    public Movil(String marca,String modelo,Integer año,String patente){
+        this.marca=marca;
+        this.modelo=modelo;
+        this.año=año;
+        this.patente=patente;
+    }
+    
 
     /**
      * @return the marca
@@ -46,7 +56,7 @@ class Movil {
      * @param año the año to set
      */
     public void setAño(int año) {
-        this.año = año;
+        this.setAño((Integer) año);
     }
 
     /**
@@ -61,5 +71,12 @@ class Movil {
      */
     public void setPatente(String patente) {
         this.patente = patente;
+    }
+
+    /**
+     * @param año the año to set
+     */
+    public void setAño(Integer año) {
+        this.año = año;
     }
 }

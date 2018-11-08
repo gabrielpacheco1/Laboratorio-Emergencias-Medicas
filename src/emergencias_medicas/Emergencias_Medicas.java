@@ -1,6 +1,8 @@
 
 package emergencias_medicas;
 
+import emergencias_medicas.arrays.ArrayMovil;
+import emergencias_medicas.ui.UIPrincipal;
 /**
  *
  * @author Gabriel
@@ -9,7 +11,9 @@ public class Emergencias_Medicas {
 
     public static void main(String[] args) {
         
-        System.out.println("\n");
+        ArrayMovil movil = new ArrayMovil();
+        UIPrincipal principal = new UIPrincipal();
+        principal.setVisible(true);
         
     }
     
