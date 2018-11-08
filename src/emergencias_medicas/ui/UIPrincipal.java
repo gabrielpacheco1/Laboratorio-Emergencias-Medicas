@@ -24,7 +24,8 @@ public class UIPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form UI_Principal
      */
-    public UIPrincipal() {
+    public UIPrincipal(Gestor gestor) {
+        this.gestor=gestor;
         initComponents();
     }
 
@@ -41,13 +42,17 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        mItmAltaMovil = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
@@ -70,38 +75,45 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenu4.setText("Alta");
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Afiliados");
-        jMenu4.add(jCheckBoxMenuItem1);
+        jMenu8.setText("Empleado");
 
-        jCheckBoxMenuItem2.setSelected(true);
-        jCheckBoxMenuItem2.setText("Empleados");
-        jMenu4.add(jCheckBoxMenuItem2);
+        jMenuItem4.setText("Administrativo");
+        jMenu8.add(jMenuItem4);
 
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("Movil");
-        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem5.setText("Doctor");
+        jMenu8.add(jMenuItem5);
+
+        jMenuItem6.setText("Enfermero");
+        jMenu8.add(jMenuItem6);
+
+        jMenuItem7.setText("Chofer");
+        jMenu8.add(jMenuItem7);
+
+        jMenu4.add(jMenu8);
+
+        jMenuItem2.setText("Afiliado");
+        jMenu4.add(jMenuItem2);
+
+        mItmAltaMovil.setText("Movil");
+        mItmAltaMovil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem3ActionPerformed(evt);
+                mItmAltaMovilActionPerformed(evt);
             }
         });
-        jMenu4.add(jCheckBoxMenuItem3);
+        jMenu4.add(mItmAltaMovil);
 
         jMenu1.add(jMenu4);
 
         jMenu5.setText("Baja");
 
-        jCheckBoxMenuItem4.setSelected(true);
-        jCheckBoxMenuItem4.setText("Afiliados");
-        jMenu5.add(jCheckBoxMenuItem4);
+        jMenu9.setText("Empleado");
+        jMenu5.add(jMenu9);
 
-        jCheckBoxMenuItem5.setSelected(true);
-        jCheckBoxMenuItem5.setText("Empleados");
-        jMenu5.add(jCheckBoxMenuItem5);
+        jMenuItem8.setText("Afiliado");
+        jMenu5.add(jMenuItem8);
 
-        jCheckBoxMenuItem6.setSelected(true);
-        jCheckBoxMenuItem6.setText("Movil");
-        jMenu5.add(jCheckBoxMenuItem6);
+        jMenuItem9.setText("Movil");
+        jMenu5.add(jMenuItem9);
 
         jMenu1.add(jMenu5);
 
@@ -140,18 +152,14 @@ public class UIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
-        
+    private void mItmAltaMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmAltaMovilActionPerformed
         AltaMovil ventana = new AltaMovil(gestor);
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
         ventana.show();
-        
-        
-        
-    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+    }//GEN-LAST:event_mItmAltaMovilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,12 +168,6 @@ public class UIPrincipal extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -174,6 +176,16 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem mItmAltaMovil;
     // End of variables declaration//GEN-END:variables
 }

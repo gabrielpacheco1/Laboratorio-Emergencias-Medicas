@@ -3,6 +3,7 @@ package emergencias_medicas.arrays;
 
 import java.util.ArrayList;
 import emergencias_medicas.Movil;
+import excepciones.ObjExistenteExcepcion;
 import java.util.Collection;
 
 public class ArrayMovil {
@@ -10,8 +11,8 @@ public class ArrayMovil {
     private final ArrayList movil = new ArrayList();
     
     
-    public void delete(String patente) {
-        Movil existe = findByPK(patente);
+    public void deleteMovil(String patente) {
+        Movil existe = buscarPatente(patente);
         if (existe != null) {
             movil.remove(existe);            
             return;
@@ -20,7 +21,7 @@ public class ArrayMovil {
     }
     
     
-    public Movil findByPK(String vpatente)  {
+    public Movil buscarPatente(String vpatente)  {
         Movil resultado = null;
          for (Object movil : movil) {
             Movil c = (Movil)movil;
@@ -32,15 +33,15 @@ public class ArrayMovil {
     }
     
     
-    public Collection findAll(){       
+    public Collection findAllMoviles(){       
         return movil;
     }        
     
     
-    public void insert(Movil insertRecord) {
-        Movil existe = findByPK(insertRecord.getPatente());
+    public void insertMovil(Movil insertRecord) {
+        Movil existe = buscarPatente(insertRecord.getPatente());
         if (existe != null) {
-            //throw new CuentaExistenteException("Cuenta existente " + existe);
+            throw new ObjExistenteExcepcion("Movil existente " + existe);
         }
         movil.add(insertRecord);
         

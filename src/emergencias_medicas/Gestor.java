@@ -13,12 +13,12 @@ public class Gestor {
         this.arraymovil = arraymovil;
     }
 
-    public ArrayList getMovil() {
-        return (ArrayList) arraymovil.findAll();
+    public ArrayList getMoviles() {
+        return (ArrayList) arraymovil.findAllMoviles();
     }
 
-    public Movil getCuenta(String patente) {
-        Movil movil = arraymovil.findByPK(patente);
+    public Movil getMovil(String patente) {
+        Movil movil = arraymovil.buscarPatente(patente);
         if (movil!=null){
             return movil;
         }
@@ -26,11 +26,11 @@ public class Gestor {
         return null;
     }
 
-    public void agregarCuenta(Movil movil) {
-        arraymovil.insert(movil);        
+    public void agregarMovil(Movil movil) {
+        arraymovil.insertMovil(movil);        
     }
     
-    public void eliminarCuenta(String patente) {
-        arraymovil.delete(patente);        
+    public void eliminarMovil(String patente) {
+        arraymovil.deleteMovil(patente);
     }
 }

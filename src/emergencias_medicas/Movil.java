@@ -14,6 +14,7 @@ public class Movil {
         this.modelo=modelo;
         this.año=año;
         this.patente=patente;
+                
     }
     
 
@@ -55,8 +56,8 @@ public class Movil {
     /**
      * @param año the año to set
      */
-    public void setAño(int año) {
-        this.setAño((Integer) año);
+    public void setAño(Integer año) {
+        this.año = año;
     }
 
     /**
@@ -73,10 +74,9 @@ public class Movil {
         this.patente = patente;
     }
 
-    /**
-     * @param año the año to set
-     */
-    public void setAño(Integer año) {
-        this.año = año;
+    public String toString(){
+        
+        return ("Patente: "+getPatente());
     }
+    
 }

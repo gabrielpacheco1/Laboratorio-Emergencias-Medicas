@@ -7,6 +7,8 @@ package emergencias_medicas.ui;
 
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Movil;
+import excepciones.CamposIncompletosExcepcion;
+import excepciones.ObjExistenteExcepcion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class AltaMovil extends javax.swing.JInternalFrame {
     
-    
+    private Gestor gestor;
 
     /**
      * Creates new form AltaMovil
@@ -25,7 +27,6 @@ public class AltaMovil extends javax.swing.JInternalFrame {
         initComponents();
     }
     
-    private Gestor gestor;
     public AltaMovil(Gestor gestor) {
         this.gestor=gestor;
         initComponents();
@@ -131,14 +132,20 @@ public class AltaMovil extends javax.swing.JInternalFrame {
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         
-        Movil movil = new Movil(txtMarca.getText(),txtModelo.getText(),Integer.decode(txtAño.getText()),txtPatente.getText());
+        try{
+            Movil movil = new Movil(txtMarca.getText(),txtModelo.getText(),Integer.decode(txtAño.getText()),
+                    txtPatente.getText());
         
-        gestor.agregarCuenta(movil);
+            gestor.agregarMovil (movil);
+        /*}catch(CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);*/
+        }catch(ObjExistenteExcepcion ex){
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);
+        }catch (java.lang.NumberFormatException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error en el formato del año\n\nIngrese un año válido", "Alerta",0);            
+        }
         
         this.dispose();
-        
-        
-        
         
     }//GEN-LAST:event_botonGuardarActionPerformed
 

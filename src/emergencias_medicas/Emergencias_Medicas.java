@@ -12,12 +12,10 @@ public class Emergencias_Medicas {
     public static void main(String[] args) {
         
         ArrayMovil movil = new ArrayMovil();
-        UIPrincipal principal = new UIPrincipal();
+        Gestor gestor= new Gestor(movil);
+        UIPrincipal principal = new UIPrincipal(gestor);
         principal.setVisible(true);
         
-        
-        System.out.println("\n");
-        System.out.println("hola");
 
     }
     
