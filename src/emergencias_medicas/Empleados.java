@@ -14,7 +14,6 @@ public abstract class Empleados {
     private Integer telefono;
     private String sexo;
     private Integer codigo;
-    //private Persona grupofamiliar
     
     
     public Empleados(String nombre,String apellido,Integer dni,Integer dia,Integer mes,Integer año,String direccion,Integer telefono,String sexo,Integer codigo){

@@ -1,6 +1,7 @@
 
 package emergencias_medicas;
 
+
 import java.util.Calendar;
 
 
@@ -170,8 +171,7 @@ public class Afiliado {
      */
     public void setFechaUltPago(Calendar fechaUltPago) {
         this.fechaUltPago = fechaUltPago;
+
     }
-    
-    
     
 }
