@@ -174,4 +174,8 @@ public class Afiliado {
 
     }
     
+    public String toString(){
+        
+        return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Fecha de pago: "+this.getFechaUltPago());
+    }
 }
