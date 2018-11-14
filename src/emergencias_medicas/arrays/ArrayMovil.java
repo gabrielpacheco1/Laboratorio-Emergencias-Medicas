@@ -10,7 +10,7 @@ public class ArrayMovil {
     
     private final ArrayList movil = new ArrayList();
     
-    
+
     public void deleteMovil(String patente) {
         Movil existe = buscarPatente(patente);
         if (existe != null) {

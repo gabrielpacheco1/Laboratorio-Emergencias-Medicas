@@ -5,6 +5,8 @@
  */
 package emergencias_medicas.ui;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Ruben
@@ -16,7 +18,58 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
      */
     public EstablecerPago() {
         initComponents();
-    }
+                                                    
+//        Integer dia= Integer.decode(this.txtDia.getText());
+//        Integer mes= Integer.decode(this.txtMes.getText());
+//        Integer año= Integer.decode(this.txtAño.getText());
+//        
+//        this.afiliado.setNombre(this.jTextField1.getText()); 
+//        
+//        if(dia>31){
+//            JOptionPane.showMessageDialog(rootPane, "Error en el numero ingresado");
+//        }    
+//        else if ((dia>30&&(mes==4||mes==6||mes==9||mes==11))||(dia>28&&mes==2)){
+//            JOptionPane.showMessageDialog(rootPane, "Error en el numero ingresado");
+//        }
+//        else{
+            //Calendar cal = Calendar.getInstance();
+        
+            //DateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
+        
+            //String fecha = formato.format(cal.getTime());
+        
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        
+//
+//        try{
+//            Date fechaPago= dateFormat.parse(this.txtAño.getText()+"-"+this.txtMes.getText()+"_"+this.txtDia.getText());
+//            this.afiliado.setFechaUltPago(fechaPago);
+//            
+//            
+//        }catch(ParseException e){
+//            JOptionPane.showMessageDialog(rootPane, "Fecha no establecida");
+//        };
+        
+
+        this.afiliado.setNombre(this.jTextField1.getText());
+        Calendar cal = Calendar.getInstance();
+        this.afiliado.setCal(cal);
+        this.dispose();
+        
+//        DateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
+//        
+//        String fecha = formato.format(cal.getTime());
+//        
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        
+//        System.out.println("Dia elegido :" + cal.get(Calendar.DAY_OF_MONTH));
+        
+        
+            
+//        }
+        
+    
+  }
 
     /**
      * This method is called from within the constructor to initialize the form.
