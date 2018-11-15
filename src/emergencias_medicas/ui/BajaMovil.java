@@ -2,10 +2,18 @@
 package emergencias_medicas.ui;
 
 import emergencias_medicas.Gestor;
+import emergencias_medicas.Movil;
+import excepciones.ObjExistenteExcepcion;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import java.awt.Frame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BajaMovil extends javax.swing.JInternalFrame {
 
     private Gestor gestor;
+    private Frame principal;
     /**
      * Creates new form BajaMovil
      */
@@ -13,7 +21,8 @@ public class BajaMovil extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    public BajaMovil(Gestor gestor){
+    public BajaMovil(Frame principal,Gestor gestor){
+        this.principal=principal;
         this.gestor=gestor;
         initComponents();
     }
@@ -26,21 +35,113 @@ public class BajaMovil extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        txtPatente = new javax.swing.JTextField();
+        botonPatente = new javax.swing.JButton();
+        botonAceptar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
+        setClosable(true);
+        setTitle("Baja Movil");
+
+        jLabel1.setText("Patente");
+
+        botonPatente.setText("Buscar");
+        botonPatente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPatenteActionPerformed(evt);
+            }
+        });
+
+        botonAceptar.setText("Aceptar");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAceptarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonAceptar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtPatente, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(botonPatente)
+                        .addGap(52, 52, 52))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPatente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonPatente)))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(botonAceptar)
+                .addGap(39, 39, 39))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
+        String patente= txtPatente.getText();
+        
+        gestor.eliminarMovil(patente);
+        
+        this.dispose();
+        
+        
+        
+    }//GEN-LAST:event_botonAceptarActionPerformed
+
+    private void botonPatenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPatenteActionPerformed
+        
+        BuscarMovil buscar = new BuscarMovil(principal, true, this.txtPatente, gestor);
+        buscar.setVisible(true);
+        this.setNombrePatente();
+        
+        
+        
+    }//GEN-LAST:event_botonPatenteActionPerformed
+
+    
+    private void setNombrePatente(){
+        Movil movil=null;
+        //try {
+            movil = gestor.getMovil(this.txtPatente.getText().trim());
+        /*} catch (InexistenteExcepcion ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
+        } catch (DataAccessException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
+        } finally {
+            this.jLabel2.setText((cuenta!=null)?cuenta.getNombre():"Cuenta Inexistente");
+        }*/
+        this.jLabel2.setText(String.valueOf(movil.getAño()));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAceptar;
+    private javax.swing.JButton botonPatente;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField txtPatente;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import emergencias_medicas.Movil;
 import emergencias_medicas.Gestor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 
 /**
@@ -47,13 +49,15 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        mItmAltaAfiliado = new javax.swing.JMenuItem();
-        mItmAltaMovil = new javax.swing.JMenuItem();
+        altaAfiliado = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        altaMovil = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        mItmPago = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        bajaMovil = new javax.swing.JMenuItem();
+        Pago = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -64,7 +68,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,21 +95,24 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenu4.add(jMenu8);
 
-        mItmAltaAfiliado.setText("Afiliado");
-        mItmAltaAfiliado.addActionListener(new java.awt.event.ActionListener() {
+        altaAfiliado.setText("Afiliado");
+        altaAfiliado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItmAltaAfiliadoActionPerformed(evt);
+                altaAfiliadoActionPerformed(evt);
             }
         });
-        jMenu4.add(mItmAltaAfiliado);
+        jMenu4.add(altaAfiliado);
 
-        mItmAltaMovil.setText("Movil");
-        mItmAltaMovil.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Familia de Afiliados");
+        jMenu4.add(jMenuItem2);
+
+        altaMovil.setText("Movil");
+        altaMovil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItmAltaMovilActionPerformed(evt);
+                altaMovilActionPerformed(evt);
             }
         });
-        jMenu4.add(mItmAltaMovil);
+        jMenu4.add(altaMovil);
 
         jMenu1.add(jMenu4);
 
@@ -117,18 +124,26 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenuItem8.setText("Afiliado");
         jMenu5.add(jMenuItem8);
 
-        jMenuItem9.setText("Movil");
-        jMenu5.add(jMenuItem9);
+        jMenuItem3.setText("Familia de Afiliados");
+        jMenu5.add(jMenuItem3);
+
+        bajaMovil.setText("Movil");
+        bajaMovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bajaMovilActionPerformed(evt);
+            }
+        });
+        jMenu5.add(bajaMovil);
 
         jMenu1.add(jMenu5);
 
-        mItmPago.setText("Pago");
-        mItmPago.addActionListener(new java.awt.event.ActionListener() {
+        Pago.setText("Pago");
+        Pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItmPagoActionPerformed(evt);
+                PagoActionPerformed(evt);
             }
         });
-        jMenu1.add(mItmPago);
+        jMenu1.add(Pago);
 
         jMenuBar1.add(jMenu1);
 
@@ -148,9 +163,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,27 +175,36 @@ public class UIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mItmAltaMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmAltaMovilActionPerformed
+    private void altaMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaMovilActionPerformed
         AltaMovil ventana = new AltaMovil(gestor);
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
         ventana.show();
-    }//GEN-LAST:event_mItmAltaMovilActionPerformed
+    }//GEN-LAST:event_altaMovilActionPerformed
 
-    private void mItmPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmPagoActionPerformed
+    private void PagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mItmPagoActionPerformed
+    }//GEN-LAST:event_PagoActionPerformed
 
-    private void mItmAltaAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmAltaAfiliadoActionPerformed
+    private void altaAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaAfiliadoActionPerformed
         AltaAfiliado ventana= new AltaAfiliado(gestor);
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
         ventana.show();
-    }//GEN-LAST:event_mItmAltaAfiliadoActionPerformed
+    }//GEN-LAST:event_altaAfiliadoActionPerformed
+
+    private void bajaMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajaMovilActionPerformed
+        BajaMovil ventana= new BajaMovil(this,gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
+        ventana.show();
+    }//GEN-LAST:event_bajaMovilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,6 +213,10 @@ public class UIPrincipal extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Pago;
+    private javax.swing.JMenuItem altaAfiliado;
+    private javax.swing.JMenuItem altaMovil;
+    private javax.swing.JMenuItem bajaMovil;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -201,14 +227,18 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenuItem mItmAltaAfiliado;
-    private javax.swing.JMenuItem mItmAltaMovil;
-    private javax.swing.JMenuItem mItmPago;
     // End of variables declaration//GEN-END:variables
+
+    public JDesktopPane getJDesktopPane1() {
+        return jDesktopPane1;
+    }
+
+
 }

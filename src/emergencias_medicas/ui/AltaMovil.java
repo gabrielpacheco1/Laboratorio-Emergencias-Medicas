@@ -7,7 +7,6 @@ package emergencias_medicas.ui;
 
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Movil;
-import excepciones.CamposIncompletosExcepcion;
 import excepciones.ObjExistenteExcepcion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
