@@ -199,7 +199,12 @@ public class UIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_altaMovilActionPerformed
 
     private void PagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoActionPerformed
-        // TODO add your handling code here:
+        EstablecerPago ventana = new EstablecerPago(gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
+        ventana.show();
     }//GEN-LAST:event_PagoActionPerformed
 
     private void altaAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaAfiliadoActionPerformed

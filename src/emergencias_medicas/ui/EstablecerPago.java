@@ -1,22 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package emergencias_medicas.ui;
 
+import emergencias_medicas.Afiliado;
+import emergencias_medicas.Gestor;
+import emergencias_medicas.Persona;
+import java.awt.Frame;
 import java.util.Calendar;
 
-/**
- *
- * @author Ruben
- */
+
 public class EstablecerPago extends javax.swing.JInternalFrame {
 
+    private Gestor gestor;
+    private Frame principal;
+    private Afiliado afiliado;
     /**
      * Creates new form EstablecerPago
      */
-    public EstablecerPago() {
+    public EstablecerPago(Gestor gestor) {
+        this.gestor=gestor;
         initComponents();
                                                     
 //        Integer dia= Integer.decode(this.txtDia.getText());
@@ -51,10 +52,10 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
 //        };
         
 
-        this.afiliado.setNombre(this.jTextField1.getText());
-        Calendar cal = Calendar.getInstance();
-        this.afiliado.setCal(cal);
-        this.dispose();
+        //this.afiliado.setNombre(this.jTextField1.getText());
+      //  Calendar cal = Calendar.getInstance();
+        //this.afiliado.setFechaUltPago(cal);
+        //this.dispose();
         
 //        DateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
 //        
@@ -80,21 +81,120 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+
+        jLabel1.setText("Documento");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Aceptar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(61, 61, 61)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(33, 33, 33))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        BuscarAfiliado buscar = new BuscarAfiliado(principal, true, this.jTextField1, gestor);
+        buscar.setVisible(true);
+        this.setNombreAfiliado();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String documento= jTextField1.getText();
+        Calendar cal = Calendar.getInstance();
+        
+        for (int i = 0; i < gestor.getPersonas().size(); i++)
+        {
+            Persona persona=(Persona) gestor.getPersonas().get(i);
+            if(persona instanceof Afiliado){
+                if(persona.getDni().equals(documento)){
+                    Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
+                    afi.setFechaUltPago(cal);
+                }
+            }
+        }    
+        this.dispose();
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    
+    private void setNombreAfiliado() {
+        Afiliado afiliado=null;
+        //try {
+            afiliado = (Afiliado)gestor.getPersona(this.jTextField1.getText().trim());
+        /*} catch (InexistenteExcepcion ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
+        } catch (DataAccessException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
+        } finally {
+            this.jLabel2.setText((cuenta!=null)?cuenta.getNombre():"Cuenta Inexistente");
+        }*/
+        this.jLabel2.setText(String.valueOf(afiliado.getDni()));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
