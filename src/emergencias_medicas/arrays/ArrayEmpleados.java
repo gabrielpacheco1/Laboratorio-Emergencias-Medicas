@@ -10,7 +10,7 @@ public class ArrayEmpleados {
     private final ArrayList empleados = new ArrayList();
     
     
-    public void delete(Integer dni) {
+    public void delete(String dni) {
         Empleados existe = findByPK(dni);
         if (existe != null) {
             empleados.remove(existe);            
@@ -20,7 +20,7 @@ public class ArrayEmpleados {
     }
     
     
-    public Empleados findByPK(Integer vdni)  {
+        public Empleados findByPK(String vdni)  {
         Empleados resultado = null;
          for (Object empleado : empleados) {
             Empleados c = (Empleados)empleado;

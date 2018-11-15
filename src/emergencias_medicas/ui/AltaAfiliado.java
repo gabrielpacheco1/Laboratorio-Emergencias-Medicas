@@ -132,7 +132,8 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
             Afiliado afiliado = new Afiliado(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
                     txtDireccion.getText(),Integer.decode(txtTelefono.getText()), txtSexo.getText());
         
-            gestor.agregarAfiliado (afiliado);
+            //gestor.agregarAfiliado (afiliado);
+            gestor.agregarPersona (afiliado);
         /*}catch(CamposIncompletosExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);*/
         }catch(ObjExistenteExcepcion ex){

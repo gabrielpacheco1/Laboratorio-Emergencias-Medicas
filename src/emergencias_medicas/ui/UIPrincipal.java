@@ -52,6 +52,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         altaAfiliado = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         altaMovil = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -114,6 +115,14 @@ public class UIPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(altaMovil);
 
+        jMenuItem1.setText("Empleado");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
         jMenu1.add(jMenu4);
 
         jMenu5.setText("Baja");
@@ -122,6 +131,11 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenu5.add(jMenu9);
 
         jMenuItem8.setText("Afiliado");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem8);
 
         jMenuItem3.setText("Familia de Afiliados");
@@ -206,6 +220,24 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_bajaMovilActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        AltaEmpleado ventana= new AltaEmpleado(gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
+        ventana.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        BajaAfiliado ventana= new BajaAfiliado(this,gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
+        ventana.show();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,6 +259,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

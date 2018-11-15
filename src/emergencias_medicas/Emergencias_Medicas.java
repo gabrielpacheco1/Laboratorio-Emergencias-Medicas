@@ -3,6 +3,7 @@ package emergencias_medicas;
 
 import emergencias_medicas.arrays.ArrayAfiliados;
 import emergencias_medicas.arrays.ArrayMovil;
+import emergencias_medicas.arrays.ArrayPersonas;
 import emergencias_medicas.ui.UIPrincipal;
 /**
  *
@@ -14,7 +15,10 @@ public class Emergencias_Medicas {
         
         ArrayMovil movil = new ArrayMovil();
         ArrayAfiliados afiliado= new ArrayAfiliados();
-        Gestor gestor= new Gestor(movil, afiliado);
+        ArrayPersonas persona= new ArrayPersonas();
+        
+        Gestor gestor= new Gestor(movil, persona);
+        
         UIPrincipal principal = new UIPrincipal(gestor);
         principal.setVisible(true);
         
