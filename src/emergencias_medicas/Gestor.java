@@ -4,6 +4,7 @@ package emergencias_medicas;
 import emergencias_medicas.arrays.ArrayAfiliados;
 import emergencias_medicas.arrays.ArrayMovil;
 import emergencias_medicas.arrays.ArrayPersonas;
+import emergencias_medicas.arrays.ArraySolicitudes;
 import java.util.ArrayList;
 
 public class Gestor {
@@ -11,10 +12,12 @@ public class Gestor {
     private ArrayMovil arraymovil;
     private ArrayAfiliados arrayAfiliados;
     private ArrayPersonas arrayPersonas;
+    private ArraySolicitudes arraySolicitudes;
 
-    public Gestor(ArrayMovil arraymovil, ArrayPersonas arrayPersonas) {
+    public Gestor(ArrayMovil arraymovil, ArrayPersonas arrayPersonas, ArraySolicitudes arraySolicitudes) {
         this.arraymovil = arraymovil;
         this.arrayPersonas= arrayPersonas;
+        this.arraySolicitudes= arraySolicitudes;
         
     }
     
@@ -87,6 +90,29 @@ public class Gestor {
     
     public void eliminarPersona(String docu) {
         arrayPersonas.delete(docu);
+    }
+    
+    //////////////////////////////////////////////////////////
+    
+    public ArrayList getSolicitudes() {
+        return (ArrayList) arraySolicitudes.findAll();
+    }
+    
+    public Solicitud_Asistencia getSolicitud(String orden) {
+        Solicitud_Asistencia solicitud = arraySolicitudes.buscarNroOrden(orden);
+        if (solicitud!=null){
+            return solicitud;
+        }
+        //throw new CuentaInexistenteException("Cuenta Inexistente: "+numero);
+        return null;
+    }
+    
+    public void agregarSolicitud(Solicitud_Asistencia solicitud) {
+        arraySolicitudes.insert(solicitud);        
+    }
+    
+    public void eliminarSolicitud(String orden) {
+        arraySolicitudes.delete(orden);
     }
     
 }

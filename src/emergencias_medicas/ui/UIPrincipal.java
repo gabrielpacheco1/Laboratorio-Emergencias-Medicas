@@ -59,8 +59,9 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         bajaMovil = new javax.swing.JMenuItem();
         Pago = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mItmAltaSolicitud = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,12 +162,25 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Registro");
+        mItmAltaSolicitud.setText("Registro");
+        mItmAltaSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItmAltaSolicitudActionPerformed(evt);
+            }
+        });
 
         jMenu7.setText("jMenu7");
-        jMenu2.add(jMenu7);
+        mItmAltaSolicitud.add(jMenu7);
 
-        jMenuBar1.add(jMenu2);
+        jMenuItem9.setText("Solicitud");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        mItmAltaSolicitud.add(jMenuItem9);
+
+        jMenuBar1.add(mItmAltaSolicitud);
 
         jMenu3.setText("Salir");
         jMenuBar1.add(jMenu3);
@@ -243,6 +257,19 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void mItmAltaSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmAltaSolicitudActionPerformed
+        
+    }//GEN-LAST:event_mItmAltaSolicitudActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        AltaSolicitud ventana= new AltaSolicitud(this,gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
+        ventana.show();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,7 +283,6 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem bajaMovil;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -272,6 +298,8 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu mItmAltaSolicitud;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getJDesktopPane1() {

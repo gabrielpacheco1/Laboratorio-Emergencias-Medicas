@@ -1,6 +1,8 @@
 
 package emergencias_medicas;
 
+import java.util.Calendar;
+
 public class Solicitud_Asistencia {
     private Afiliado paciente;
     private Movil movil;
@@ -8,13 +10,19 @@ public class Solicitud_Asistencia {
     private Doctor doctor;
     private Enfermero enfermero;
     private Resultado resultado;
-    private String fecha;
-    private String hora;
+   // private String fecha;
+    //private String hora;
+    private Calendar fecha;
+    private String nroOrden;
     
     
-    
-    
-    
+    public Solicitud_Asistencia(Afiliado paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, Movil movil) {
+        this.paciente=paciente;
+        this.movil=movil;
+        this.chofer=chofer;
+        this.doctor=doctor;
+        this.enfermero=enfermero;
+    }
     
 
     /**
@@ -46,30 +54,88 @@ public class Solicitud_Asistencia {
     }
 
     /**
+     * @return the paciente
+     */
+    public Afiliado getPaciente() {
+        return paciente;
+    }
+
+    /**
+     * @param paciente the paciente to set
+     */
+    public void setPaciente(Afiliado paciente) {
+        this.paciente = paciente;
+    }
+
+    /**
+     * @return the chofer
+     */
+    public Chofer getChofer() {
+        return chofer;
+    }
+
+    /**
+     * @param chofer the chofer to set
+     */
+    public void setChofer(Chofer chofer) {
+        this.chofer = chofer;
+    }
+
+    /**
+     * @return the doctor
+     */
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    /**
+     * @param doctor the doctor to set
+     */
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    /**
+     * @return the enfermero
+     */
+    public Enfermero getEnfermero() {
+        return enfermero;
+    }
+
+    /**
+     * @param enfermero the enfermero to set
+     */
+    public void setEnfermero(Enfermero enfermero) {
+        this.enfermero = enfermero;
+    }
+
+    /**
      * @return the fecha
      */
-    public String getFecha() {
+    public Calendar getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(String fecha) {
+    public void setFecha(Calendar fecha) {
         this.fecha = fecha;
     }
 
     /**
-     * @return the hora
+     * @return the nroOrden
      */
-    public String getHora() {
-        return hora;
+    public String getNroOrden() {
+        return nroOrden;
     }
 
     /**
-     * @param hora the hora to set
+     * @param nroOrden the nroOrden to set
      */
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setNroOrden(String nroOrden) {
+        this.nroOrden = nroOrden;
     }
+
+    
 }

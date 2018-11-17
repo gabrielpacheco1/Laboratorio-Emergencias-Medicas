@@ -1,14 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package emergencias_medicas;
 
-/**
- *
- * @author Carlos Mansilla
- */
-public class GrupoFamiliar {
+public class GrupoFamiliar extends Persona{
+    
+    private Afiliado afiliado;
+    
+    public GrupoFamiliar(String nombre, String apellido, String documento, String direccion, Integer telefono,String sexo){
+        super(nombre,apellido,documento,direccion,telefono,sexo);
+        
+    }
+
+    /**
+     * @return the afiliado
+     */
+    public Afiliado getAfiliado() {
+        return afiliado;
+    }
+
+    /**
+     * @param afiliado the afiliado to set
+     */
+    public void setAfiliado(Afiliado afiliado) {
+        this.afiliado = afiliado;
+    }
     
 }
