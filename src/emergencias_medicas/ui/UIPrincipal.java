@@ -44,13 +44,8 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
         altaAfiliado = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        altaFamilia = new javax.swing.JMenuItem();
         altaMovil = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -63,6 +58,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenu7 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        listaMoviles = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,22 +77,6 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenu4.setText("Alta");
 
-        jMenu8.setText("Empleado");
-
-        jMenuItem4.setText("Administrativo");
-        jMenu8.add(jMenuItem4);
-
-        jMenuItem5.setText("Doctor");
-        jMenu8.add(jMenuItem5);
-
-        jMenuItem6.setText("Enfermero");
-        jMenu8.add(jMenuItem6);
-
-        jMenuItem7.setText("Chofer");
-        jMenu8.add(jMenuItem7);
-
-        jMenu4.add(jMenu8);
-
         altaAfiliado.setText("Afiliado");
         altaAfiliado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,8 +85,13 @@ public class UIPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(altaAfiliado);
 
-        jMenuItem2.setText("Familia de Afiliados");
-        jMenu4.add(jMenuItem2);
+        altaFamilia.setText("Familia de Afiliados");
+        altaFamilia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaFamiliaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(altaFamilia);
 
         altaMovil.setText("Movil");
         altaMovil.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +167,16 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mItmAltaSolicitud);
 
-        jMenu3.setText("Salir");
+        jMenu3.setText("Lista");
+
+        listaMoviles.setText("Moviles");
+        listaMoviles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaMovilesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(listaMoviles);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -270,15 +264,33 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void listaMovilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaMovilesActionPerformed
+        ListaMoviles ventana= new ListaMoviles(gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
+    }//GEN-LAST:event_listaMovilesActionPerformed
+
+    private void altaFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaFamiliaActionPerformed
+        AltaFamilia ventana= new AltaFamilia(this,gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
+    }//GEN-LAST:event_altaFamiliaActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
-
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Pago;
     private javax.swing.JMenuItem altaAfiliado;
+    private javax.swing.JMenuItem altaFamilia;
     private javax.swing.JMenuItem altaMovil;
     private javax.swing.JMenuItem bajaMovil;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -287,18 +299,13 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem listaMoviles;
     private javax.swing.JMenu mItmAltaSolicitud;
     // End of variables declaration//GEN-END:variables
 

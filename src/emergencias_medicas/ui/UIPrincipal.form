@@ -14,33 +14,6 @@
                 <Property name="text" type="java.lang.String" value="Alta"/>
               </Properties>
               <SubComponents>
-                <Menu class="javax.swing.JMenu" name="jMenu8">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Empleado"/>
-                  </Properties>
-                  <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Administrativo"/>
-                      </Properties>
-                    </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Doctor"/>
-                      </Properties>
-                    </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Enfermero"/>
-                      </Properties>
-                    </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Chofer"/>
-                      </Properties>
-                    </MenuItem>
-                  </SubComponents>
-                </Menu>
                 <MenuItem class="javax.swing.JMenuItem" name="altaAfiliado">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Afiliado"/>
@@ -49,10 +22,13 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altaAfiliadoActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                <MenuItem class="javax.swing.JMenuItem" name="altaFamilia">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Familia de Afiliados"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altaFamiliaActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="altaMovil">
                   <Properties>
@@ -140,8 +116,18 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="text" type="java.lang.String" value="Lista"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="listaMoviles">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Moviles"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaMovilesActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
