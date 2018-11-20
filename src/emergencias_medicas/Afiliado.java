@@ -9,7 +9,8 @@ import java.util.Calendar;
 public class Afiliado extends Persona {
     
     private Calendar fechaUltPago;
-    private ArrayList <Persona> grupoFamiliar;
+    private int cantidadGrupoFamiliar;
+    //private ArrayList <Persona> grupoFamiliar;
     private static String tipo= "Afiliado";
     
     
@@ -40,9 +41,9 @@ public class Afiliado extends Persona {
         if(fechaUltPago!=null){
             Integer mes= fechaUltPago.get(Calendar.MONTH);
             mes=mes+1; //Porque los meses se enumeran del 0 al 11
-            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Fecha de pago: "+fechaUltPago.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fechaUltPago.get(Calendar.YEAR));
+            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Grupo familiar: "+this.cantidadGrupoFamiliar+". Fecha de pago: "+fechaUltPago.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fechaUltPago.get(Calendar.YEAR));
         }
-            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Fecha de pago: No realizo pago");
+            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Grupo familiar: "+this.cantidadGrupoFamiliar+". Fecha de pago: No realizo pago");
         
     }
 
@@ -51,5 +52,19 @@ public class Afiliado extends Persona {
      */
     public static String getTipo() {
         return tipo;
+    }
+
+    /**
+     * @return the cantidadGrupoFamiliar
+     */
+    public int getCantidadGrupoFamiliar() {
+        return cantidadGrupoFamiliar;
+    }
+
+    /**
+     * @param cantidadGrupoFamiliar the cantidadGrupoFamiliar to set
+     */
+    public void setCantidadGrupoFamiliar(int cantidadGrupoFamiliar) {
+        this.cantidadGrupoFamiliar = cantidadGrupoFamiliar;
     }
 }

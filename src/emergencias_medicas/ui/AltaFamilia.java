@@ -188,10 +188,14 @@ public class AltaFamilia extends javax.swing.JInternalFrame {
                     GrupoFamiliar familia = new GrupoFamiliar(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
                     txtDireccion.getText(),Integer.decode(txtTelefono.getText()), txtSexo.getText(),afi);
                     gestor.agregarPersona (familia);
-                    }
-                
+                    afi.setCantidadGrupoFamiliar(afi.getCantidadGrupoFamiliar()+1);
+                    JOptionPane.showMessageDialog(rootPane, "Se agregó correctamente");
+                }
+                if(documento.equals(""))
+                    JOptionPane.showMessageDialog(rootPane, "No seleccionó afiliado");
+                this.dispose();
             } 
-            this.dispose();
+            //this.dispose();
             //gestor.agregarPersona (familia);
         }catch(CamposIncompletosExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
@@ -201,7 +205,6 @@ public class AltaFamilia extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Error en el formato del telefono\n\nIngrese un telefono válido", "Alerta",0);            
         }
         
-        this.dispose();
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void setNombreFamilia() {
