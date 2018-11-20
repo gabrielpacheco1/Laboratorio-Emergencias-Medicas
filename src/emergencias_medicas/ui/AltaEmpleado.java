@@ -10,6 +10,9 @@ import emergencias_medicas.Doctor;
 import emergencias_medicas.EmpleadosAdministractivos;
 import emergencias_medicas.Enfermero;
 import emergencias_medicas.Gestor;
+import excepciones.CamposIncompletosExcepcion;
+import excepciones.ObjExistenteExcepcion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -176,25 +179,34 @@ public class AltaEmpleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (this.jComboBox1.getSelectedItem().equals("Doctor")){
-            Doctor doctor= new Doctor(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
-            gestor.agregarPersona(doctor);
+        try{
+            if (this.jComboBox1.getSelectedItem().equals("Doctor")){
+                Doctor doctor= new Doctor(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                gestor.agregarPersona(doctor);
             
-        }else if (this.jComboBox1.getSelectedItem().equals("Enfermero")){
-            Enfermero enfermero= new Enfermero(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
-            gestor.agregarPersona(enfermero);
+            }else if (this.jComboBox1.getSelectedItem().equals("Enfermero")){
+                Enfermero enfermero= new Enfermero(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                gestor.agregarPersona(enfermero);
             
-        }else if (this.jComboBox1.getSelectedItem().equals("Administrativo")){
-            EmpleadosAdministractivos administrativo= new EmpleadosAdministractivos (this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
-            gestor.agregarPersona(administrativo);
+            }else if (this.jComboBox1.getSelectedItem().equals("Administrativo")){
+                EmpleadosAdministractivos administrativo= new EmpleadosAdministractivos (this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                gestor.agregarPersona(administrativo);
             
-        }else if (this.jComboBox1.getSelectedItem().equals("Chofer")){
-            Chofer chofer= new Chofer(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
-            gestor.agregarPersona(chofer);
+            }else if (this.jComboBox1.getSelectedItem().equals("Chofer")){
+                Chofer chofer= new Chofer(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                gestor.agregarPersona(chofer);
             
-        }
+            }
+            this.dispose();
+        }catch(CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
+        }catch (java.lang.NumberFormatException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error en el formato del telefono\n\nIngrese un telefono válido", "Alerta",0);            
+        }catch(ObjExistenteExcepcion ex){
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);
+        }                        
         
-        this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

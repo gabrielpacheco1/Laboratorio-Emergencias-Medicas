@@ -10,6 +10,7 @@ import emergencias_medicas.GrupoFamiliar;
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Persona;
 import emergencias_medicas.ui.BuscarAfiliado;
+import excepciones.CamposIncompletosExcepcion;
 import excepciones.ObjExistenteExcepcion;
 import javax.swing.JOptionPane;
 import java.awt.Frame;
@@ -175,25 +176,25 @@ public class AltaFamilia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        try{
-            GrupoFamiliar familia = new GrupoFamiliar(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
-                    txtDireccion.getText(),Integer.decode(txtTelefono.getText()), txtSexo.getText());
-            
-            String documento=txtAfiliado.getText();
+        String documento=txtAfiliado.getText();
         
-        /*    for (int i = 0; i < gestor.getPersonas().size(); i++)
-        {
-            Persona persona=(Persona) gestor.getPersonas().get(i);
-            if(persona instanceof Afiliado){
+        try{
+            for (int i = 0; i < gestor.getPersonas().size(); i++)
+            {
+                Persona persona=(Persona) gestor.getPersonas().get(i);
+               // if(persona instanceof Afiliado){
                 if(persona.getDni().equals(documento)){
                     Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                    
-                }
-            }
-        } */
-            gestor.agregarPersona (familia);
-        /*}catch(CamposIncompletosExcepcion e){
-            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);*/
+                    GrupoFamiliar familia = new GrupoFamiliar(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
+                    txtDireccion.getText(),Integer.decode(txtTelefono.getText()), txtSexo.getText(),afi);
+                    gestor.agregarPersona (familia);
+                    }
+                
+            } 
+            this.dispose();
+            //gestor.agregarPersona (familia);
+        }catch(CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
         }catch(ObjExistenteExcepcion ex){
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);
         }catch (java.lang.NumberFormatException e) {

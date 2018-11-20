@@ -4,6 +4,7 @@ package emergencias_medicas.arrays;
 import java.util.ArrayList;
 import emergencias_medicas.Afiliado;
 import excepciones.ObjExistenteExcepcion;
+import excepciones.ObjInexistenteExcepcion;
 import java.util.Collection;
 
 public class ArrayAfiliados {
@@ -18,7 +19,8 @@ public class ArrayAfiliados {
             afiliados.remove(existe);            
             return;
         }        
-        //throw new CuentaInexistenteException("Cuenta inexistente: " + patente);
+        else
+            throw new ObjInexistenteExcepcion("La persona con el dni "+dni+" no se encuentra registrada.");
     }
     
     
@@ -42,7 +44,7 @@ public class ArrayAfiliados {
     public void insertAfiliado(Afiliado insertRecord) {
         Afiliado existe = buscarDocumento(insertRecord.getDni());
         if (existe != null) {
-            throw new ObjExistenteExcepcion("Afiliado existente " + existe);
+            throw new ObjExistenteExcepcion("El DNI ya está registrado. " + existe);
         }
         afiliados.add(insertRecord);
     }

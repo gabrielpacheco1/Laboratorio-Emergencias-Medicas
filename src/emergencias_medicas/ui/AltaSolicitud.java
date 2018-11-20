@@ -12,7 +12,9 @@ import emergencias_medicas.Enfermero;
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Movil;
 import emergencias_medicas.Solicitud_Asistencia;
+import excepciones.CamposIncompletosExcepcion;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -177,14 +179,18 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        Afiliado afi=(Afiliado)gestor.getPersona(this.jTextField1.getText());
-        Doctor doc=(Doctor)gestor.getPersona(this.jTextField2.getText());
-        Enfermero enf=(Enfermero)gestor.getPersona(this.jTextField3.getText());
-        Chofer cho=(Chofer)gestor.getPersona(this.jTextField4.getText());
-        Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
-        
-        Solicitud_Asistencia solicitud= new Solicitud_Asistencia(afi,doc,enf,cho,mov);   
+        try{
+            Afiliado afi=(Afiliado)gestor.getPersona(this.jTextField1.getText());
+            Doctor doc=(Doctor)gestor.getPersona(this.jTextField2.getText());
+            Enfermero enf=(Enfermero)gestor.getPersona(this.jTextField3.getText());
+            Chofer cho=(Chofer)gestor.getPersona(this.jTextField4.getText());
+            Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
 
+            Solicitud_Asistencia solicitud= new Solicitud_Asistencia(afi,doc,enf,cho,mov);
+            this.dispose();
+        }catch (CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnBuscarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadosActionPerformed

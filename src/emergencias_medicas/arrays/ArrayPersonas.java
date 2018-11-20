@@ -3,6 +3,7 @@ package emergencias_medicas.arrays;
 
 import emergencias_medicas.Persona;
 import excepciones.ObjExistenteExcepcion;
+import excepciones.ObjInexistenteExcepcion;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -16,8 +17,9 @@ public class ArrayPersonas {
         if (existe != null) {
             personas.remove(existe);            
             return;
-        }        
-        //throw new CuentaInexistenteException("Cuenta inexistente: " + patente);
+        }
+        throw new ObjInexistenteExcepcion("La persona con el dni "+dni+" no se encuentra registrada.");       
+        
     }
     
     

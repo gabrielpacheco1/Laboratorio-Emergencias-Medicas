@@ -3,6 +3,8 @@ package emergencias_medicas.arrays;
 
 import java.util.ArrayList;
 import emergencias_medicas.Empleados;
+import excepciones.ObjExistenteExcepcion;
+import excepciones.ObjInexistenteExcepcion;
 import java.util.Collection;
 
 public class ArrayEmpleados {
@@ -16,7 +18,7 @@ public class ArrayEmpleados {
             empleados.remove(existe);            
             return;
         }        
-        //throw new CuentaInexistenteException("Cuenta inexistente: " + patente);
+        throw new ObjInexistenteExcepcion("La persona con el dni "+dni+" no se encuentra registrada.");
     }
     
     
@@ -40,7 +42,7 @@ public class ArrayEmpleados {
     public void insert(Empleados insertRecord) {
         Empleados existe = findByPK(insertRecord.getDni());
         if (existe != null) {
-            //throw new CuentaExistenteException("Cuenta existente " + existe);
+            throw new ObjExistenteExcepcion("El DNI ya está registrado. " + existe);
         }
         empleados.add(insertRecord);
     }

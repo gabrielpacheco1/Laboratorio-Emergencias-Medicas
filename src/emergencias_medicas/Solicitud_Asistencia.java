@@ -1,6 +1,7 @@
 
 package emergencias_medicas;
 
+import excepciones.CamposIncompletosExcepcion;
 import java.util.Calendar;
 
 public class Solicitud_Asistencia {
@@ -16,12 +17,16 @@ public class Solicitud_Asistencia {
     private String nroOrden;
     
     
-    public Solicitud_Asistencia(Afiliado paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, Movil movil) {
+    public Solicitud_Asistencia(Afiliado paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, Movil movil){
+        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null){
+            throw new CamposIncompletosExcepcion ("No rellenó todos los campos");
+        }
         this.paciente=paciente;
         this.movil=movil;
         this.chofer=chofer;
         this.doctor=doctor;
         this.enfermero=enfermero;
+        
     }
     
 

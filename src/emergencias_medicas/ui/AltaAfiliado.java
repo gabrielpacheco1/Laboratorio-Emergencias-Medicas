@@ -4,6 +4,7 @@ package emergencias_medicas.ui;
 import emergencias_medicas.Afiliado;
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Movil;
+import excepciones.CamposIncompletosExcepcion;
 import excepciones.ObjExistenteExcepcion;
 import javax.swing.JOptionPane;
 
@@ -134,15 +135,16 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
         
             //gestor.agregarAfiliado (afiliado);
             gestor.agregarPersona (afiliado);
-        /*}catch(CamposIncompletosExcepcion e){
-            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);*/
+            this.dispose();
+        }catch(CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
         }catch(ObjExistenteExcepcion ex){
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);
         }catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(rootPane, "Error en el formato del telefono\n\nIngrese un telefono válido", "Alerta",0);            
         }
         
-        this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -4,7 +4,9 @@ package emergencias_medicas.ui;
 import emergencias_medicas.Afiliado;
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Persona;
+import excepciones.ObjInexistenteExcepcion;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 
 public class BajaAfiliado extends javax.swing.JInternalFrame {
 
@@ -102,11 +104,15 @@ public class BajaAfiliado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String documento= jTextField1.getText();
+        try{
+            String documento= jTextField1.getText();
         
-        gestor.eliminarPersona(documento);
+            gestor.eliminarPersona(documento);
         
-        this.dispose();
+            this.dispose();
+        }catch(ObjInexistenteExcepcion ex){
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void setNombreAfiliado() {

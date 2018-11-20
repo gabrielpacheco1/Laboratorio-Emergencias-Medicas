@@ -53,6 +53,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         bajaMovil = new javax.swing.JMenuItem();
+        mItmBajaEmpleado = new javax.swing.JMenuItem();
         Pago = new javax.swing.JMenuItem();
         mItmAltaSolicitud = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
@@ -134,6 +135,14 @@ public class UIPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu5.add(bajaMovil);
+
+        mItmBajaEmpleado.setText("Empleado");
+        mItmBajaEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItmBajaEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mItmBajaEmpleado);
 
         jMenu1.add(jMenu5);
 
@@ -282,6 +291,15 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_altaFamiliaActionPerformed
 
+    private void mItmBajaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmBajaEmpleadoActionPerformed
+        BajaEmpleado ventana= new BajaEmpleado(this,gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
+    }//GEN-LAST:event_mItmBajaEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -307,6 +325,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem listaMoviles;
     private javax.swing.JMenu mItmAltaSolicitud;
+    private javax.swing.JMenuItem mItmBajaEmpleado;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getJDesktopPane1() {

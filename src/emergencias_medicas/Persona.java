@@ -1,6 +1,8 @@
 
 package emergencias_medicas;
 
+import excepciones.CamposIncompletosExcepcion;
+
 public class Persona {
     private String nombre;
     private String apellido;
@@ -14,7 +16,11 @@ public class Persona {
     private static String tipo;
     
     public Persona(String nombre,String apellido,String dni,/*,Integer dia,Integer mes,Integer año*/
-            String direccion,Integer telefono,String sexo){
+            String direccion,Integer telefono,String sexo)throws CamposIncompletosExcepcion{
+        
+        if(nombre.equals("")||apellido.equals("")||dni.equals("")||direccion.equals("")||sexo.equals("")){
+            throw new CamposIncompletosExcepcion("No rellenó todos los campos");
+        }
         this.nombre=nombre;
         this.apellido=apellido;
         this.dni=dni;
@@ -24,7 +30,7 @@ public class Persona {
         this.direccion=direccion;
         this.telefono=telefono;
         this.sexo=sexo;
-
+        
     }
     
     

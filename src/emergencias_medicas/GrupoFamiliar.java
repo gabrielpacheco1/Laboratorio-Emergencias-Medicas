@@ -1,13 +1,19 @@
 
 package emergencias_medicas;
 
+import excepciones.CamposIncompletosExcepcion;
+
 public class GrupoFamiliar extends Persona{
     
     private Afiliado afiliado;
     
-    public GrupoFamiliar(String nombre, String apellido, String documento, String direccion, Integer telefono,String sexo){
+    public GrupoFamiliar(String nombre, String apellido, String documento, String direccion, Integer telefono,
+            String sexo, Afiliado afiliado){
         super(nombre,apellido,documento,direccion,telefono,sexo);
-        
+        if(afiliado==null){ 
+            throw new CamposIncompletosExcepcion("No rellenó todos los campos");
+        }
+            this.afiliado=afiliado;
     }
 
     /**
