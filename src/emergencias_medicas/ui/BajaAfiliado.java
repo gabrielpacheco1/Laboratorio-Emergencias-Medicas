@@ -117,16 +117,17 @@ public class BajaAfiliado extends javax.swing.JInternalFrame {
 
     private void setNombreAfiliado() {
         Afiliado afiliado=null;
-        //try {
+        try {
             afiliado = (Afiliado)gestor.getPersona(this.jTextField1.getText().trim());
-        /*} catch (InexistenteExcepcion ex) {
+            this.jLabel2.setText(String.valueOf(afiliado.getDni()));
+        } catch (ObjInexistenteExcepcion ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
-        } catch (DataAccessException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
-        } finally {
-            this.jLabel2.setText((cuenta!=null)?cuenta.getNombre():"Cuenta Inexistente");
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(rootPane, "No realizó selección", "Alerta", 0);
+        }/* finally {
+            this.jLabel2.setText((afiliado!=null)?afiliado.getNombre():"Inexistente");
         }*/
-        this.jLabel2.setText(String.valueOf(afiliado.getDni()));
+        //this.jLabel2.setText(String.valueOf(afiliado.getDni()));
     }
     
 

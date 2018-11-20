@@ -5,7 +5,8 @@ import excepciones.CamposIncompletosExcepcion;
 import java.util.Calendar;
 
 public class Solicitud_Asistencia {
-    private Afiliado paciente;
+    private Afiliado aPaciente;
+    private GrupoFamiliar gfPaciente;
     private Movil movil;
     private Chofer chofer;
     private Doctor doctor;
@@ -16,12 +17,25 @@ public class Solicitud_Asistencia {
     private Calendar fecha;
     private String nroOrden;
     
-    
+    //para un afiliado
     public Solicitud_Asistencia(Afiliado paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, Movil movil){
         if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null){
             throw new CamposIncompletosExcepcion ("No rellenó todos los campos");
         }
-        this.paciente=paciente;
+        aPaciente=paciente;
+        this.movil=movil;
+        this.chofer=chofer;
+        this.doctor=doctor;
+        this.enfermero=enfermero;
+        
+    }
+    
+    //Para personas del grupo familiar de un afiliado
+    public Solicitud_Asistencia(GrupoFamiliar paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, Movil movil){
+        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null){
+            throw new CamposIncompletosExcepcion ("No rellenó todos los campos");
+        }
+        gfPaciente=paciente;
         this.movil=movil;
         this.chofer=chofer;
         this.doctor=doctor;
@@ -62,14 +76,14 @@ public class Solicitud_Asistencia {
      * @return the paciente
      */
     public Afiliado getPaciente() {
-        return paciente;
+        return aPaciente;
     }
 
     /**
      * @param paciente the paciente to set
      */
     public void setPaciente(Afiliado paciente) {
-        this.paciente = paciente;
+        this.aPaciente = paciente;
     }
 
     /**
@@ -140,6 +154,20 @@ public class Solicitud_Asistencia {
      */
     public void setNroOrden(String nroOrden) {
         this.nroOrden = nroOrden;
+    }
+
+    /**
+     * @return the gfPaciente
+     */
+    public GrupoFamiliar getGfPaciente() {
+        return gfPaciente;
+    }
+
+    /**
+     * @param gfPaciente the gfPaciente to set
+     */
+    public void setGfPaciente(GrupoFamiliar gfPaciente) {
+        this.gfPaciente = gfPaciente;
     }
 
     

@@ -182,7 +182,7 @@ public class AltaFamilia extends javax.swing.JInternalFrame {
             for (int i = 0; i < gestor.getPersonas().size(); i++)
             {
                 Persona persona=(Persona) gestor.getPersonas().get(i);
-               // if(persona instanceof Afiliado){
+               // if(persona instanceof Afiliado){   
                 if(persona.getDni().equals(documento)){
                     Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
                     GrupoFamiliar familia = new GrupoFamiliar(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),

@@ -5,6 +5,7 @@ import emergencias_medicas.Afiliado;
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Persona;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class BuscarAfiliado extends javax.swing.JDialog {
@@ -88,13 +89,15 @@ public class BuscarAfiliado extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         Afiliado s = jList1.getSelectedValue();
         if (s!=null){
             jTextField1.setText(s.getDni());
         }
         this.setVisible(false);
-        
+
         this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
