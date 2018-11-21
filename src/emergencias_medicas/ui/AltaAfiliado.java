@@ -17,6 +17,8 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
     public AltaAfiliado(Gestor gestor) {
         this.gestor=gestor;
         initComponents();
+        Afiliado afiliado=new Afiliado();
+        this.jLabel7.setText(Float.toString(afiliado.getTarifa())); 
     }
 
     /**
@@ -41,6 +43,8 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
         txtTelefono = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -63,6 +67,8 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel8.setText("Total a abonar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,16 +88,26 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
                             .addComponent(txtDNI, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel8)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                 .addComponent(txtTelefono)
-                                .addComponent(txtSexo)))))
+                                .addComponent(txtSexo))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(120, 120, 120)))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -121,9 +137,13 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,6 +157,7 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
         
             //gestor.agregarAfiliado (afiliado);
             gestor.agregarPersona (afiliado);
+            
             this.dispose();
         }catch(CamposIncompletosExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
@@ -158,6 +179,8 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDireccion;

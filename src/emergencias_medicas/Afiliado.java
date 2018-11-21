@@ -12,7 +12,10 @@ public class Afiliado extends Persona {
     private int cantidadGrupoFamiliar;
     //private ArrayList <Persona> grupoFamiliar;
     private static String tipo= "Afiliado";
-   
+    private static final Float tarifa= 1000f;
+    private static final Float tarifaGF= 500f;
+    
+    public Afiliado(){}
     
     public Afiliado(String nombre,String apellido,String dni,/*,Integer dia,Integer mes,Integer año*/
             String sexo,Integer telefono,String direccion,Calendar fechaUltPago){
@@ -20,6 +23,11 @@ public class Afiliado extends Persona {
         this.fechaUltPago=fechaUltPago;
     }
 
+    public Float pagarTarifa(){
+        Float tarifaFinal;
+        tarifaFinal=this.getTarifa()+(this.cantidadGrupoFamiliar*this.getTarifaGF());
+        return tarifaFinal;
+    }
 
     /**
      * @return the fechaUltPago
@@ -66,5 +74,19 @@ public class Afiliado extends Persona {
      */
     public void setCantidadGrupoFamiliar(int cantidadGrupoFamiliar) {
         this.cantidadGrupoFamiliar = cantidadGrupoFamiliar;
+    }
+
+    /**
+     * @return the tarifa
+     */
+    public static Float getTarifa() {
+        return tarifa;
+    }
+
+    /**
+     * @return the tarifaGF
+     */
+    public static Float getTarifaGF() {
+        return tarifaGF;
     }
 }

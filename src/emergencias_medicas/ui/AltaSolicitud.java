@@ -251,7 +251,7 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 Chofer cho=(Chofer)gestor.getPersona(this.jTextField4.getText());
                 Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
                 
-                if(((año-afi.getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - afi.getFechaUltPago().get(Calendar.MONTH))>2)){
+                if(((año-afi.getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - afi.getFechaUltPago().get(Calendar.MONTH))<=2)){
                     Solicitud_Asistencia solicitud= new Solicitud_Asistencia(afi,doc,enf,cho,mov,this.txtOrden.getText(),cal);
                     gestor.agregarSolicitud(solicitud);
                     doc.setEstado("Ocupado");
@@ -271,7 +271,7 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
                 
                 
-                if(((año-grupo.getAfiliado().getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - grupo.getAfiliado().getFechaUltPago().get(Calendar.MONTH))>2)){
+                if(((año-grupo.getAfiliado().getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - grupo.getAfiliado().getFechaUltPago().get(Calendar.MONTH))<=2)){
                     Solicitud_Asistencia solicitud= new Solicitud_Asistencia(grupo,doc,enf,cho,mov,this.txtOrden.getText(),cal);
                     gestor.agregarSolicitud(solicitud);
                     doc.setEstado("Ocupado");
@@ -284,6 +284,8 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(rootPane, "Tiene una demora de mas de 2 meses en el pago", "Alerta",0);
             }
         }catch (CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
+        }catch (ObjInexistenteExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed

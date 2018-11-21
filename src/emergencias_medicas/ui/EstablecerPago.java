@@ -6,6 +6,7 @@ import emergencias_medicas.Gestor;
 import emergencias_medicas.Persona;
 import java.awt.Frame;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 
 public class EstablecerPago extends javax.swing.JInternalFrame {
@@ -86,6 +87,9 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        btnCalcular = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setText("Documento");
 
@@ -109,6 +113,15 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Total a pagar:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,17 +130,26 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(61, 61, 61)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(48, 48, 48))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(61, 61, 61)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCalcular)
+                    .addComponent(jButton1))
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +161,12 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                     .addComponent(jButton1))
                 .addGap(55, 55, 55)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCalcular)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(25, 25, 25)
                 .addComponent(jButton2)
                 .addGap(33, 33, 33))
         );
@@ -160,6 +187,8 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String documento= jTextField1.getText();
         Calendar cal = Calendar.getInstance();
+        Integer año= cal.get(Calendar.YEAR);
+        Integer mes= cal.get(Calendar.MONTH);
         
         for (int i = 0; i < gestor.getPersonas().size(); i++)
         {
@@ -167,13 +196,33 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
             if(persona instanceof Afiliado){
                 if(persona.getDni().equals(documento)){
                     Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                    afi.setFechaUltPago(cal);
+                    if(afi.getFechaUltPago().get(Calendar.MONTH)!=mes)
+                        afi.setFechaUltPago(cal);
+                    else
+                        JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
                 }
             }
         }    
         this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+ 
+        String documento= jTextField1.getText();
+        
+        for (int i = 0; i < gestor.getPersonas().size(); i++)
+        {
+            Persona persona=(Persona) gestor.getPersonas().get(i);
+            if(persona instanceof Afiliado){
+                if(persona.getDni().equals(documento)){
+                    Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
+                    Float tar= afi.pagarTarifa();
+                    this.jLabel3.setText(Float.toString(tar));
+                }
+            }
+        }
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
     
     private void setNombreAfiliado() {
@@ -191,10 +240,13 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalcular;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

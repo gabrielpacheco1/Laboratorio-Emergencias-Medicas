@@ -103,12 +103,17 @@ public class BajaMovil extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        String patente= txtPatente.getText();
+        try{
+            String patente= txtPatente.getText();
         
-        gestor.eliminarMovil(patente);
+            gestor.eliminarMovil(patente);
         
-        this.dispose();
-        
+            this.dispose();
+        }catch(ObjInexistenteExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, "No realizó selección", "Alerta", 0);
+        }finally{
+            this.dispose();
+        }
         
         
     }//GEN-LAST:event_botonAceptarActionPerformed

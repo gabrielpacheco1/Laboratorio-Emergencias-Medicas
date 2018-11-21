@@ -200,8 +200,18 @@ public class RealizarPago extends javax.swing.JInternalFrame {
 
     private void botonVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerActionPerformed
         String documento= txtDocumento.getText();
-        int bono=gestor.pago(pago.getBonoAfi(), pago.getBonoFamilia(), documento);
-        this.jLabel3.setText(String.valueOf(bono));
+        for (int i = 0; i < gestor.getPersonas().size(); i++)
+        {
+            Persona persona=(Persona) gestor.getPersonas().get(i);
+            if(persona instanceof Afiliado){
+                if(persona.getDni().equals(documento)){
+                    Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
+                    int bono=gestor.pago(pago.getBonoAfi(), pago.getBonoFamilia(), documento);
+                    this.jLabel3.setText(String.valueOf(bono));
+                }
+            }
+        }    
+        
     }//GEN-LAST:event_botonVerActionPerformed
 
     

@@ -16,6 +16,8 @@ public class Persona {
     private static String tipo;
     private String estado;
     
+    public Persona(){}
+    
     public Persona(String nombre,String apellido,String dni,/*,Integer dia,Integer mes,Integer año*/
             String direccion,Integer telefono,String sexo)throws CamposIncompletosExcepcion{
         

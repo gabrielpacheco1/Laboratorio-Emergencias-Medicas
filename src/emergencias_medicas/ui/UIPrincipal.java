@@ -55,6 +55,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         bajaMovil = new javax.swing.JMenuItem();
         bajaEmpleado = new javax.swing.JMenuItem();
         Pago = new javax.swing.JMenuItem();
+        mItmPagoOriginal = new javax.swing.JMenuItem();
         mItmAltaSolicitud = new javax.swing.JMenu();
         Solicitud = new javax.swing.JMenuItem();
         finSolicitud = new javax.swing.JMenuItem();
@@ -149,6 +150,14 @@ public class UIPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(Pago);
+
+        mItmPagoOriginal.setText("Pago original");
+        mItmPagoOriginal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItmPagoOriginalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItmPagoOriginal);
 
         jMenuBar1.add(jMenu1);
 
@@ -346,6 +355,15 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_listaSolicitudActionPerformed
 
+    private void mItmPagoOriginalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmPagoOriginalActionPerformed
+        EstablecerPago ventana = new EstablecerPago(gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
+        ventana.show();
+    }//GEN-LAST:event_mItmPagoOriginalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,6 +390,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem listaMoviles;
     private javax.swing.JMenuItem listaSolicitud;
     private javax.swing.JMenu mItmAltaSolicitud;
+    private javax.swing.JMenuItem mItmPagoOriginal;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getJDesktopPane1() {
