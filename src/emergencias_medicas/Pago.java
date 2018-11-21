@@ -9,6 +9,7 @@ public class Pago {
     
     
     public Pago(int bonoAfi,int bonoFamilia){
+        
         this.bonoAfi=bonoAfi;
         this.bonoFamilia=bonoFamilia;
     }

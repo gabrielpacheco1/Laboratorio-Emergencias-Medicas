@@ -4,6 +4,7 @@ package emergencias_medicas.ui;
 import emergencias_medicas.Afiliado;
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Persona;
+import excepciones.ObjInexistenteExcepcion;
 import java.awt.Frame;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -84,9 +85,9 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        botonAceptar = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -99,17 +100,17 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonBuscarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonAceptar.setText("Aceptar");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonAceptarActionPerformed(evt);
             }
         });
 
@@ -135,7 +136,7 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(botonAceptar)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(61, 61, 61)
@@ -148,7 +149,7 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                         .addGap(73, 73, 73)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCalcular)
-                    .addComponent(jButton1))
+                    .addComponent(botonBuscar))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
@@ -158,7 +159,7 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(botonBuscar))
                 .addGap(55, 55, 55)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
@@ -167,7 +168,7 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(25, 25, 25)
-                .addComponent(jButton2)
+                .addComponent(botonAceptar)
                 .addGap(33, 33, 33))
         );
 
@@ -178,34 +179,41 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         BuscarAfiliado buscar = new BuscarAfiliado(principal, true, this.jTextField1, gestor);
         buscar.setVisible(true);
         this.setNombreAfiliado();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonBuscarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         String documento= jTextField1.getText();
         Calendar cal = Calendar.getInstance();
         Integer año= cal.get(Calendar.YEAR);
         Integer mes= cal.get(Calendar.MONTH);
-        
-        for (int i = 0; i < gestor.getPersonas().size(); i++)
-        {
-            Persona persona=(Persona) gestor.getPersonas().get(i);
-            if(persona instanceof Afiliado){
-                if(persona.getDni().equals(documento)){
-                    Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                    if(afi.getFechaUltPago().get(Calendar.MONTH)!=mes)
-                        afi.setFechaUltPago(cal);
-                    else
-                        JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
+        try{
+            for (int i = 0; i < gestor.getPersonas().size(); i++)
+            {
+                Persona persona=(Persona) gestor.getPersonas().get(i);
+                if(persona instanceof Afiliado){
+                    if(persona.getDni().equals(documento)){
+                        Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
+                        if(afi.getFechaUltPago().get(Calendar.MONTH)!=mes)
+                            afi.setFechaUltPago(cal);
+                        else
+                            JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
+                    }
                 }
-            }
-        }    
+            } 
+        }catch (ObjInexistenteExcepcion ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
+        }catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(rootPane, "No realizó selección", "Alerta", 0);
+        }
+        
+   
         this.dispose();
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
  
@@ -227,22 +235,22 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
     
     private void setNombreAfiliado() {
         Afiliado afiliado=null;
-        //try {
+        try {
             afiliado = (Afiliado)gestor.getPersona(this.jTextField1.getText().trim());
-        /*} catch (InexistenteExcepcion ex) {
+            
+            this.jLabel2.setText(String.valueOf(afiliado.getDni()));
+        } catch (ObjInexistenteExcepcion ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
-        } catch (DataAccessException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
-        } finally {
-            this.jLabel2.setText((cuenta!=null)?cuenta.getNombre():"Cuenta Inexistente");
-        }*/
-        this.jLabel2.setText(String.valueOf(afiliado.getDni()));
+        }catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(rootPane, "No realizó selección", "Alerta", 0);
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAceptar;
+    private javax.swing.JButton botonBuscar;
     private javax.swing.JButton btnCalcular;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

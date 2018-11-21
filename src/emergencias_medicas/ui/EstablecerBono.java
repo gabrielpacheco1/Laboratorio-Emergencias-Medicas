@@ -6,6 +6,8 @@
 package emergencias_medicas.ui;
 
 import emergencias_medicas.Pago;
+import excepciones.CamposIncompletosExcepcion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -95,10 +97,14 @@ public class EstablecerBono extends javax.swing.JInternalFrame {
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         
-        Pago pago= new Pago(Integer.decode(txtAfiliado.getText()),Integer.decode(txtFamilia.getText()));
-        pago.setBonoAfi(Integer.decode(txtAfiliado.getText()));
-        pago.setBonoFamilia(Integer.decode(txtFamilia.getText()));
-        this.dispose();
+        try{
+            Pago pago= new Pago(Integer.decode(txtAfiliado.getText()),Integer.decode(txtFamilia.getText()));
+            pago.setBonoAfi(Integer.decode(txtAfiliado.getText()));
+            pago.setBonoFamilia(Integer.decode(txtFamilia.getText()));
+            this.dispose();
+        }catch(CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
+        }  
         
     }//GEN-LAST:event_botonAceptarActionPerformed
 

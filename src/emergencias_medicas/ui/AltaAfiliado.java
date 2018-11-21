@@ -153,7 +153,7 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
         Calendar fecha= Calendar.getInstance();
         try{
             Afiliado afiliado = new Afiliado(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
-                    txtSexo.getText(),Integer.decode(txtTelefono.getText()), txtDireccion.getText(), fecha);
+                    txtSexo.getText(),Integer.getInteger(txtTelefono.getText()), txtDireccion.getText(), fecha);
         
             //gestor.agregarAfiliado (afiliado);
             gestor.agregarPersona (afiliado);
