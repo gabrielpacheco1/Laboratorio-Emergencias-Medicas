@@ -15,6 +15,7 @@ import emergencias_medicas.Movil;
 import emergencias_medicas.Solicitud_Asistencia;
 import excepciones.CamposIncompletosExcepcion;
 import java.awt.Frame;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,6 +63,8 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
         btnBuscarGrupoFamiliar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtOrden = new javax.swing.JTextField();
 
         jLabel1.setText("Afiliado DNI");
 
@@ -121,13 +124,13 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Grupo familiar");
 
-        jTextField6.setText("jTextField6");
-
         btnBuscarGrupoFamiliar.setText("Buscar");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afiliado", "Grupo familiar" }));
 
         jLabel7.setText("Paciente");
+
+        jLabel8.setText("Nro. Orden");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,30 +140,37 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 .addGap(158, 158, 158)
                 .addComponent(btnAceptar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(71, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addGap(55, 55, 55)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtOrden, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField1)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))))
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnBuscarEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -176,7 +186,7 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,9 +197,9 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarGrupoFamiliar))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -204,7 +214,11 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarMovil))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addComponent(btnAceptar)
                 .addContainerGap())
         );
@@ -213,6 +227,9 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        Calendar cal = Calendar.getInstance();
+        Integer año= cal.get(Calendar.YEAR);
+        Integer mes= cal.get(Calendar.MONTH);
         try{
             if(this.jComboBox1.getSelectedItem().equals("Afiliado")){
                 Afiliado afi=(Afiliado)gestor.getPersona(this.jTextField1.getText());
@@ -220,9 +237,18 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 Enfermero enf=(Enfermero)gestor.getPersona(this.jTextField3.getText());
                 Chofer cho=(Chofer)gestor.getPersona(this.jTextField4.getText());
                 Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
-
-                Solicitud_Asistencia solicitud= new Solicitud_Asistencia(afi,doc,enf,cho,mov);
-                this.dispose();
+                
+                if(((año-afi.getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - afi.getFechaUltPago().get(Calendar.MONTH))>2)){
+                    Solicitud_Asistencia solicitud= new Solicitud_Asistencia(afi,doc,enf,cho,mov,this.txtOrden.getText(),cal);
+                    gestor.agregarSolicitud(solicitud);
+                    doc.setEstado("Ocupado");
+                    enf.setEstado("Ocupado");
+                    cho.setEstado("Ocupado");
+                    mov.setEstado("Ocupado");
+                    this.dispose();
+                }
+                else
+                    JOptionPane.showMessageDialog(rootPane, "Tiene una demora de mas de 2 meses en el pago", "Alerta",0);
             }
             else if(this.jComboBox1.getSelectedItem().equals("Grupo familiar")){
                 GrupoFamiliar grupo=(GrupoFamiliar)gestor.getPersona(this.jTextField6.getText());
@@ -230,9 +256,19 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 Enfermero enf=(Enfermero)gestor.getPersona(this.jTextField3.getText());
                 Chofer cho=(Chofer)gestor.getPersona(this.jTextField4.getText());
                 Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
-
-                Solicitud_Asistencia solicitud= new Solicitud_Asistencia(grupo,doc,enf,cho,mov);
-                this.dispose();
+                
+                
+                if(((año-grupo.getAfiliado().getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - grupo.getAfiliado().getFechaUltPago().get(Calendar.MONTH))>2)){
+                    Solicitud_Asistencia solicitud= new Solicitud_Asistencia(grupo,doc,enf,cho,mov,this.txtOrden.getText(),cal);
+                    gestor.agregarSolicitud(solicitud);
+                    doc.setEstado("Ocupado");
+                    enf.setEstado("Ocupado");
+                    cho.setEstado("Ocupado");
+                    mov.setEstado("Ocupado");
+                    this.dispose();
+                }
+                else
+                    JOptionPane.showMessageDialog(rootPane, "Tiene una demora de mas de 2 meses en el pago", "Alerta",0);
             }
         }catch (CamposIncompletosExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
@@ -349,11 +385,13 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtOrden;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ public abstract class Empleados extends Persona {
     private Integer codigo;
     
     
+    
     public Empleados(String nombre,String apellido,String dni,/*Integer dia,Integer mes,Integer año,*/String direccion,Integer telefono,String sexo,Integer codigo){
         super(nombre,apellido,dni,direccion,telefono,sexo);
 

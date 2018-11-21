@@ -30,7 +30,7 @@ public class BuscarEmpleado extends javax.swing.JDialog {
         for (int i = 0; i < gestor.getPersonas().size(); i++)
         {
             Persona persona=(Persona) gestor.getPersonas().get(i);//obtiene todos los elementos del arraylist, uno x uno
-                if(persona instanceof Doctor){   //si pertence a la clase Doctor
+            if(persona instanceof Doctor && persona.getEstado().equals("Libre")){   //si pertence a la clase Doctor
                 listModel1.addElement(persona); //lo incluye en la lista
         
             }
@@ -40,7 +40,7 @@ public class BuscarEmpleado extends javax.swing.JDialog {
         for (int i = 0; i < gestor.getPersonas().size(); i++)
         {
             Persona persona=(Persona) gestor.getPersonas().get(i);//obtiene todos los elementos del arraylist, uno x uno
-                if(persona instanceof Enfermero){   //si pertence a la clase Enfermero
+                if(persona instanceof Enfermero && persona.getEstado().equals("Libre")){   //si pertence a la clase Enfermero
                 listModel2.addElement(persona); //lo incluye en la lista
         
             }
@@ -50,7 +50,7 @@ public class BuscarEmpleado extends javax.swing.JDialog {
         for (int i = 0; i < gestor.getPersonas().size(); i++)
         {
             Persona persona=(Persona) gestor.getPersonas().get(i);//obtiene todos los elementos del arraylist, uno x uno
-                if(persona instanceof Chofer){   //si pertence a la clase Chofer
+                if(persona instanceof Chofer && persona.getEstado().equals("Libre")){   //si pertence a la clase Chofer
                 listModel3.addElement(persona); //lo incluye en la lista
         
             }

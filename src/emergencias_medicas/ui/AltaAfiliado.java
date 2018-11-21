@@ -6,6 +6,7 @@ import emergencias_medicas.Gestor;
 import emergencias_medicas.Movil;
 import excepciones.CamposIncompletosExcepcion;
 import excepciones.ObjExistenteExcepcion;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 public class AltaAfiliado extends javax.swing.JInternalFrame {
@@ -129,9 +130,10 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Calendar fecha= Calendar.getInstance();
         try{
             Afiliado afiliado = new Afiliado(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
-                    txtDireccion.getText(),Integer.decode(txtTelefono.getText()), txtSexo.getText());
+                    txtDireccion.getText(),Integer.decode(txtTelefono.getText()), txtSexo.getText(), fecha);
         
             //gestor.agregarAfiliado (afiliado);
             gestor.agregarPersona (afiliado);

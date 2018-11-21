@@ -11,15 +11,17 @@ public class Solicitud_Asistencia {
     private Chofer chofer;
     private Doctor doctor;
     private Enfermero enfermero;
-    private Resultado resultado;
+    private String resultado;
    // private String fecha;
     //private String hora;
     private Calendar fecha;
     private String nroOrden;
+    private String estado;
     
     //para un afiliado
-    public Solicitud_Asistencia(Afiliado paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, Movil movil){
-        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null){
+    public Solicitud_Asistencia(Afiliado paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, 
+            Movil movil,String nroOrden, Calendar fecha){
+        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null||nroOrden.equals("")){
             throw new CamposIncompletosExcepcion ("No rellenó todos los campos");
         }
         aPaciente=paciente;
@@ -27,12 +29,16 @@ public class Solicitud_Asistencia {
         this.chofer=chofer;
         this.doctor=doctor;
         this.enfermero=enfermero;
-        
+        this.nroOrden=nroOrden;
+        this.fecha=fecha;
+        this.estado="Pendiente";
+        this.resultado= "Resultado pendiente";
     }
     
     //Para personas del grupo familiar de un afiliado
-    public Solicitud_Asistencia(GrupoFamiliar paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, Movil movil){
-        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null){
+    public Solicitud_Asistencia(GrupoFamiliar paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, 
+            Movil movil,String nroOrden, Calendar fecha){
+        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null||nroOrden.equals("")){
             throw new CamposIncompletosExcepcion ("No rellenó todos los campos");
         }
         gfPaciente=paciente;
@@ -40,10 +46,18 @@ public class Solicitud_Asistencia {
         this.chofer=chofer;
         this.doctor=doctor;
         this.enfermero=enfermero;
-        
+        this.nroOrden=nroOrden;
+        this.fecha=fecha;
+        this.estado="Pendiente";
+        this.resultado= "Resultado pendiente";
     }
     
 
+    public String toString(){
+        
+        return (nroOrden+". "+doctor+". "+enfermero+". "+chofer+". "+movil+". "+resultado+". "+fecha);
+        
+    }
     /**
      * @return the movil
      */
@@ -61,14 +75,14 @@ public class Solicitud_Asistencia {
     /**
      * @return the resultado
      */
-    public Resultado getResultado() {
+    public String getResultado() {
         return resultado;
     }
 
     /**
      * @param resultado the resultado to set
      */
-    public void setResultado(Resultado resultado) {
+    public void setResultado(String resultado) {
         this.resultado = resultado;
     }
 
@@ -76,14 +90,14 @@ public class Solicitud_Asistencia {
      * @return the paciente
      */
     public Afiliado getPaciente() {
-        return aPaciente;
+        return getaPaciente();
     }
 
     /**
      * @param paciente the paciente to set
      */
     public void setPaciente(Afiliado paciente) {
-        this.aPaciente = paciente;
+        this.setaPaciente(paciente);
     }
 
     /**
@@ -168,6 +182,34 @@ public class Solicitud_Asistencia {
      */
     public void setGfPaciente(GrupoFamiliar gfPaciente) {
         this.gfPaciente = gfPaciente;
+    }
+
+    /**
+     * @return the aPaciente
+     */
+    public Afiliado getaPaciente() {
+        return aPaciente;
+    }
+
+    /**
+     * @param aPaciente the aPaciente to set
+     */
+    public void setaPaciente(Afiliado aPaciente) {
+        this.aPaciente = aPaciente;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     

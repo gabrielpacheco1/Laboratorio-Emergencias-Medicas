@@ -58,6 +58,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         mItmAltaSolicitud = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
+        mItmFinSolicitud = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         listaMoviles = new javax.swing.JMenuItem();
 
@@ -173,6 +174,14 @@ public class UIPrincipal extends javax.swing.JFrame {
             }
         });
         mItmAltaSolicitud.add(jMenuItem9);
+
+        mItmFinSolicitud.setText("Fin Solicitud");
+        mItmFinSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItmFinSolicitudActionPerformed(evt);
+            }
+        });
+        mItmAltaSolicitud.add(mItmFinSolicitud);
 
         jMenuBar1.add(mItmAltaSolicitud);
 
@@ -300,6 +309,15 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_mItmBajaEmpleadoActionPerformed
 
+    private void mItmFinSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmFinSolicitudActionPerformed
+        FinSolicitud ventana= new FinSolicitud(this,gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventana.show();
+    }//GEN-LAST:event_mItmFinSolicitudActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,6 +344,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem listaMoviles;
     private javax.swing.JMenu mItmAltaSolicitud;
     private javax.swing.JMenuItem mItmBajaEmpleado;
+    private javax.swing.JMenuItem mItmFinSolicitud;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getJDesktopPane1() {

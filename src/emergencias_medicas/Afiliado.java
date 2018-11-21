@@ -12,12 +12,12 @@ public class Afiliado extends Persona {
     private int cantidadGrupoFamiliar;
     //private ArrayList <Persona> grupoFamiliar;
     private static String tipo= "Afiliado";
-    
+   
     
     public Afiliado(String nombre,String apellido,String dni,/*,Integer dia,Integer mes,Integer año*/
-            String direccion,Integer telefono,String sexo){
+            String direccion,Integer telefono,String sexo,Calendar fechaUltPago){
         super(nombre,apellido,dni,direccion,telefono,sexo);
-       
+        this.fechaUltPago=fechaUltPago;
     }
 
 

@@ -28,9 +28,10 @@ public class BuscarMovil extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.jTextField1=jTextField1;
-        for (int i = 0; i < gestor.getMoviles().size(); i++)
-        {
-            listModel.addElement(gestor.getMoviles().get(i));
+        for (int i = 0; i < gestor.getMoviles().size(); i++) {
+            Movil movil=(Movil) gestor.getMoviles().get(i);//obtiene todos los elementos del arraylist, uno x uno
+            if(movil.getEstado().equals("Libre"))
+                listModel.addElement(gestor.getMoviles().get(i));
         }
         jList1.setModel(listModel); 
     }

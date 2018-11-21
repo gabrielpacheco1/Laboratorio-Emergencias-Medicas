@@ -6,7 +6,7 @@ public class Movil {
     private String modelo;
     private Integer año;
     private String patente;
-    
+    private String estado;
     
     
     public Movil(String marca,String modelo,Integer año,String patente){
@@ -14,7 +14,7 @@ public class Movil {
         this.modelo=modelo;
         this.año=año;
         this.patente=patente;
-                
+        this.estado="Libre";        
     }
     
 
@@ -77,6 +77,20 @@ public class Movil {
     public String toString(){
         
         return ("Patente: "+getPatente());
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
 }

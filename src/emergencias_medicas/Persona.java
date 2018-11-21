@@ -14,6 +14,7 @@ public class Persona {
     private Integer telefono;
     private String sexo;
     private static String tipo;
+    private String estado;
     
     public Persona(String nombre,String apellido,String dni,/*,Integer dia,Integer mes,Integer año*/
             String direccion,Integer telefono,String sexo)throws CamposIncompletosExcepcion{
@@ -30,7 +31,7 @@ public class Persona {
         this.direccion=direccion;
         this.telefono=telefono;
         this.sexo=sexo;
-        
+        this.estado="Libre";
     }
     
     
@@ -160,5 +161,18 @@ public class Persona {
         this.sexo = sexo;
     }
      
+     /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
 }
