@@ -49,7 +49,9 @@ public class Afiliado extends Persona {
         if(fechaUltPago!=null){
             Integer mes= fechaUltPago.get(Calendar.MONTH);
             mes=mes+1; //Porque los meses se enumeran del 0 al 11
-            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Grupo familiar: "+this.cantidadGrupoFamiliar+". Fecha de pago: "+fechaUltPago.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fechaUltPago.get(Calendar.YEAR));
+            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". DNI: "+this.getDni()+
+                    ". Grupo familiar: "+this.cantidadGrupoFamiliar+". Direccion: "+getDireccion()+". Telefono: "+getTelefono()
+                    +". Fecha de pago: "+fechaUltPago.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fechaUltPago.get(Calendar.YEAR));
         }
             return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Grupo familiar: "+this.cantidadGrupoFamiliar+". Fecha de pago: No realizo pago");
         

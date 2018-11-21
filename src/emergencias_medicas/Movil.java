@@ -76,7 +76,7 @@ public class Movil {
 
     public String toString(){
         
-        return ("Patente: "+getPatente());
+        return (marca+" "+modelo+". Patente: "+patente);
     }
 
     /**

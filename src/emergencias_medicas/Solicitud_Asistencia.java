@@ -21,7 +21,7 @@ public class Solicitud_Asistencia {
     //para un afiliado
     public Solicitud_Asistencia(Afiliado paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, 
             Movil movil,String nroOrden, Calendar fecha){
-        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null||nroOrden.equals("")){
+        if(/*paciente==null||doctor==null||enfermero==null||chofer==null||movil==null||*/nroOrden.equals("")){
             throw new CamposIncompletosExcepcion ("No rellenó todos los campos");
         }
         aPaciente=paciente;
@@ -38,7 +38,7 @@ public class Solicitud_Asistencia {
     //Para personas del grupo familiar de un afiliado
     public Solicitud_Asistencia(GrupoFamiliar paciente, Doctor doctor, Enfermero enfermero, Chofer chofer, 
             Movil movil,String nroOrden, Calendar fecha){
-        if(paciente==null||doctor==null||enfermero==null||chofer==null||movil==null||nroOrden.equals("")){
+        if(/*paciente==null||doctor==null||enfermero==null||chofer==null||movil==null||*/nroOrden.equals("")){
             throw new CamposIncompletosExcepcion ("No rellenó todos los campos");
         }
         gfPaciente=paciente;

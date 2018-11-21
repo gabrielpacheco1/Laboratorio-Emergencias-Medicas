@@ -10,6 +10,12 @@ public class Chofer extends Empleados{
         super(nombre, apellido, dni,/* dia, mes, año,*/ direccion, telefono, sexo, codigo);
 
     }
+    
+    public String toString(){
+        
+        return ("Nombre: "+getNombre()+" "+getApellido()+". DNI: "+getDni()+". Direccion: "+getDireccion()+
+                ". Telefono: "+getTelefono());
+    }
 
     /**
      * @return the tipo

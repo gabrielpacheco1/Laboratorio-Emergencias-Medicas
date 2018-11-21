@@ -16,6 +16,12 @@ public class GrupoFamiliar extends Persona{
         }
             this.afiliado=afiliado;
     }
+    
+    public String toString(){
+        
+        return ("Nombre: "+getNombre()+" "+getApellido()+". DNI: "+getDni()+". Direccion: "+getDireccion()+
+                ". Telefono: "+getTelefono());
+    }
 
     /**
      * @return the afiliado
