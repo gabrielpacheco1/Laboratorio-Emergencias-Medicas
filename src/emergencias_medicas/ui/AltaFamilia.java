@@ -36,8 +36,8 @@ public class AltaFamilia extends javax.swing.JInternalFrame {
         this.principal=principal;
         this.gestor=gestor;
         initComponents();
-        Afiliado afiliado=new Afiliado();
-        this.jLabel10.setText(Float.toString(afiliado.getTarifaGF()));
+        //Afiliado afiliado=new Afiliado();
+        this.jLabel10.setText(Float.toString(gestor.calcularPagoDeAltaFamilia()));
     }
     
     /**
@@ -182,10 +182,10 @@ public class AltaFamilia extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addGap(3, 3, 3)
                 .addComponent(botonAceptar)
                 .addContainerGap())

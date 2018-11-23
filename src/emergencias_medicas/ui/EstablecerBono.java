@@ -5,7 +5,9 @@
  */
 package emergencias_medicas.ui;
 
-import emergencias_medicas.Pago;
+import emergencias_medicas.Afiliado;
+import emergencias_medicas.Gestor;
+import emergencias_medicas.Tarifa;
 import excepciones.CamposIncompletosExcepcion;
 import javax.swing.JOptionPane;
 
@@ -15,15 +17,17 @@ import javax.swing.JOptionPane;
  */
 public class EstablecerBono extends javax.swing.JInternalFrame {
     
-    
-    private Pago pago;
+    private Gestor gestor;
+    //private Tarifa pago;
 
+    
     /**
      * Creates new form EstablecerBono
      */
-    public EstablecerBono(Pago pago) {
-        this.pago=pago;
+    public EstablecerBono(Gestor gestor) {
+        this.gestor=gestor;
         initComponents();
+     
     }
 
     /**
@@ -98,13 +102,15 @@ public class EstablecerBono extends javax.swing.JInternalFrame {
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         
         try{
-            Pago pago= new Pago(Integer.decode(txtAfiliado.getText()),Integer.decode(txtFamilia.getText()));
-            pago.setBonoAfi(Integer.decode(txtAfiliado.getText()));
-            pago.setBonoFamilia(Integer.decode(txtFamilia.getText()));
+            //Tarifa pago= new Tarifa();
+            gestor.setBonoAfi(Float.parseFloat(txtAfiliado.getText()));
+            gestor.setBonoFamilia(Float.parseFloat(txtFamilia.getText()));
             this.dispose();
         }catch(CamposIncompletosExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
-        }  
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Error en el formato\n\nIngrese valores válidos", "Alerta",0);
+        }
         
     }//GEN-LAST:event_botonAceptarActionPerformed
 

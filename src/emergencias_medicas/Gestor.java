@@ -5,6 +5,7 @@ import emergencias_medicas.arrays.ArrayMovil;
 import emergencias_medicas.arrays.ArrayPersonas;
 import emergencias_medicas.arrays.ArraySolicitudes;
 import excepciones.ObjInexistenteExcepcion;
+import excepciones.TarifaNoEstablecidaExcepcion;
 import java.util.ArrayList;
 
 public class Gestor {
@@ -13,12 +14,13 @@ public class Gestor {
     private ArrayPersonas arrayPersonas;
     private ArraySolicitudes arraySolicitudes;
     private Gestor gestor;
+    private Tarifa tarifa;
 
-    public Gestor(ArrayMovil arraymovil, ArrayPersonas arrayPersonas, ArraySolicitudes arraySolicitudes) {
+    public Gestor(ArrayMovil arraymovil, ArrayPersonas arrayPersonas, ArraySolicitudes arraySolicitudes,Tarifa tarifa) {
         this.arraymovil = arraymovil;
         this.arrayPersonas= arrayPersonas;
         this.arraySolicitudes= arraySolicitudes;
-        
+        this.tarifa=tarifa;
     }
     
     
@@ -89,25 +91,35 @@ public class Gestor {
         arraySolicitudes.delete(orden);
     }
     
-    public int pago(Integer bonoAfi,Integer bonoFami,String documento){
-        int cant=0,pago;
-        
-        for (int i = 0; i < gestor.getPersonas().size(); i++)
-        {
-            Persona persona=(Persona) gestor.getPersonas().get(i);//obtiene todos los elementos del arraylist, uno x uno
-            if(persona instanceof Afiliado && persona.getDni().equals(documento)){   //si pertence a la clase Afiliado
-                Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                cant= afi.getCantidadGrupoFamiliar();
-        
-            }
+    
+    
+    ///////////////////////////////////////////////////////////////
+    
+    public Float calcularPagoDeAltaAfiliado(){
+        return tarifa.getBonoAfi();
+    }
+    
+    public Float calcularPagoDeAltaFamilia(){
+        return tarifa.getBonoFamilia();
+    }
+    
+    public Float calcularPago(Afiliado afi) throws TarifaNoEstablecidaExcepcion{
+        Float pago;
+        int nroGrupoF = afi.getCantidadGrupoFamiliar();
+        if(tarifa.getBonoAfi()==0f || tarifa.getBonoFamilia()==0f){
+            throw new TarifaNoEstablecidaExcepcion("Tarifa no establecida");
         }
-        
-        
-        
-        pago= bonoAfi + (cant*bonoFami);
-        
+        pago=(tarifa.getBonoAfi()+(tarifa.getBonoFamilia()*nroGrupoF));
         return pago;
+    }
+    
+    public void setBonoAfi(Float bonoAfi) {
+        tarifa.setBonoAfi(bonoAfi);
         
+    }
+    
+    public void setBonoFamilia(Float bonoFamilia) {
+        tarifa.setBonoFamilia(bonoFamilia);
     }
     
 }

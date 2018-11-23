@@ -19,8 +19,7 @@ public class BuscarAfiliado extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.jTextField1=jTextField1;
-        for (int i = 0; i < gestor.getPersonas().size(); i++)
-        {
+        for (int i = 0; i < gestor.getPersonas().size(); i++){
             Persona persona=(Persona) gestor.getPersonas().get(i);//obtiene todos los elementos del arraylist, uno x uno
             if(persona instanceof Afiliado){   //si pertence a la clase Afiliado
                 listModel.addElement(persona); //lo incluye en la lista

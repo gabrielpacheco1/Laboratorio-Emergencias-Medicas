@@ -12,8 +12,6 @@ public class Solicitud_Asistencia {
     private Doctor doctor;
     private Enfermero enfermero;
     private String resultado;
-   // private String fecha;
-    //private String hora;
     private Calendar fecha;
     private String nroOrden;
     private String estado;
@@ -54,8 +52,9 @@ public class Solicitud_Asistencia {
     
 
     public String toString(){
-        
-        return (nroOrden+". "+doctor+". "+enfermero+". "+chofer+". "+movil+". "+resultado+". "+fecha);
+        Integer mes= (fecha.get(Calendar.MONTH))+1;
+        return (nroOrden+". DOCTOR: "+doctor+". ENFERMERO:"+enfermero+". CHOFER: "+chofer+". MOVIL: "+movil+
+                ". FECHA: "+fecha.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fecha.get(Calendar.YEAR));
         
     }
     /**

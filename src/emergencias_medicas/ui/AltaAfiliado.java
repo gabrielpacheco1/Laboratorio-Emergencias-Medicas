@@ -3,22 +3,26 @@ package emergencias_medicas.ui;
 
 import emergencias_medicas.Afiliado;
 import emergencias_medicas.Gestor;
+import emergencias_medicas.Pago;
+import emergencias_medicas.Tarifa;
 import excepciones.CamposIncompletosExcepcion;
 import excepciones.ObjExistenteExcepcion;
+import excepciones.TarifaNoEstablecidaExcepcion;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 public class AltaAfiliado extends javax.swing.JInternalFrame {
 
     private Gestor gestor;
+    //private Tarifa tarifa;
     /**
      * Creates new form AltaAfiliado
      */
     public AltaAfiliado(Gestor gestor) {
         this.gestor=gestor;
         initComponents();
-        Afiliado afiliado=new Afiliado();
-        this.jLabel7.setText(Float.toString(afiliado.getTarifa())); 
+        //Afiliado afiliado=new Afiliado();
+        this.jLabel7.setText(Float.toString(gestor.calcularPagoDeAltaAfiliado())); 
     }
 
     /**
@@ -151,14 +155,21 @@ public class AltaAfiliado extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Calendar fecha= Calendar.getInstance();
+        
         try{
+            //Tarifa tarifa= new Tarifa();
+            Float monto= gestor.calcularPagoDeAltaAfiliado();
+            Pago pago=new Pago(fecha,monto);
+            
             Afiliado afiliado = new Afiliado(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
-                    txtSexo.getText(),Integer.getInteger(txtTelefono.getText()), txtDireccion.getText(), fecha);
+                    txtSexo.getText(),Integer.decode(txtTelefono.getText()), txtDireccion.getText(), fecha, pago);
         
             //gestor.agregarAfiliado (afiliado);
             gestor.agregarPersona (afiliado);
             
             this.dispose();
+        }catch(TarifaNoEstablecidaExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
         }catch(CamposIncompletosExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
         }catch(ObjExistenteExcepcion ex){

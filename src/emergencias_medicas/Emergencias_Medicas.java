@@ -17,8 +17,9 @@ public class Emergencias_Medicas {
         ArrayMovil movil = new ArrayMovil();
         ArrayPersonas persona= new ArrayPersonas();
         ArraySolicitudes solicitud= new ArraySolicitudes();
+        Tarifa tarifa= new Tarifa();
         
-        Gestor gestor= new Gestor(movil, persona,solicitud);
+        Gestor gestor= new Gestor(movil, persona,solicitud, tarifa);
         
         UIPrincipal principal = new UIPrincipal(gestor);
         principal.setVisible(true);

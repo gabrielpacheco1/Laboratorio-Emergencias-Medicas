@@ -251,7 +251,18 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 Chofer cho=(Chofer)gestor.getPersona(this.jTextField4.getText());
                 Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
                 
-                if(((año-afi.getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - afi.getFechaUltPago().get(Calendar.MONTH))<=2)){
+                if(afi.CalcularDeuda(afi)==0){
+                    Solicitud_Asistencia solicitud= new Solicitud_Asistencia(afi,doc,enf,cho,mov,this.txtOrden.getText(),cal);
+                    gestor.agregarSolicitud(solicitud);
+                    doc.setEstado("Ocupado");
+                    enf.setEstado("Ocupado");
+                    cho.setEstado("Ocupado");
+                    mov.setEstado("Ocupado");
+                    this.dispose();
+                }else
+                    JOptionPane.showMessageDialog(rootPane, "Tiene una demora de mas de 2 meses en el pago", "Alerta",0);
+               
+                /*if(((año-afi.getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - afi.getFechaUltPago().get(Calendar.MONTH))<=2)){
                     Solicitud_Asistencia solicitud= new Solicitud_Asistencia(afi,doc,enf,cho,mov,this.txtOrden.getText(),cal);
                     gestor.agregarSolicitud(solicitud);
                     doc.setEstado("Ocupado");
@@ -262,6 +273,7 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 }
                 else
                     JOptionPane.showMessageDialog(rootPane, "Tiene una demora de mas de 2 meses en el pago", "Alerta",0);
+            */
             }
             else if(this.jComboBox1.getSelectedItem().equals("Grupo familiar")){
                 GrupoFamiliar grupo=(GrupoFamiliar)gestor.getPersona(this.txtFamilia.getText());
@@ -270,8 +282,21 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 Chofer cho=(Chofer)gestor.getPersona(this.jTextField4.getText());
                 Movil mov=(Movil)gestor.getMovil(this.jTextField5.getText());
                 
+           //   gestor.getPersona(grupo.getAfiliado().getDni());
+                Afiliado afi=(Afiliado) gestor.getPersona(grupo.getAfiliado().getDni());
                 
-                if(((año-grupo.getAfiliado().getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - grupo.getAfiliado().getFechaUltPago().get(Calendar.MONTH))<=2)){
+                if(grupo.getAfiliado().CalcularDeuda(afi)==0){
+                    Solicitud_Asistencia solicitud= new Solicitud_Asistencia(grupo,doc,enf,cho,mov,this.txtOrden.getText(),cal);
+                    gestor.agregarSolicitud(solicitud);
+                    doc.setEstado("Ocupado");
+                    enf.setEstado("Ocupado");
+                    cho.setEstado("Ocupado");
+                    mov.setEstado("Ocupado");
+                    this.dispose();
+                }else
+                    JOptionPane.showMessageDialog(rootPane, "Tiene una demora de mas de 2 meses en el pago", "Alerta",0);
+                
+            /*  if(((año-grupo.getAfiliado().getFechaUltPago().get(Calendar.YEAR))==0) && ((mes - grupo.getAfiliado().getFechaUltPago().get(Calendar.MONTH))<=2)){
                     Solicitud_Asistencia solicitud= new Solicitud_Asistencia(grupo,doc,enf,cho,mov,this.txtOrden.getText(),cal);
                     gestor.agregarSolicitud(solicitud);
                     doc.setEstado("Ocupado");
@@ -282,6 +307,7 @@ public class AltaSolicitud extends javax.swing.JInternalFrame {
                 }
                 else
                     JOptionPane.showMessageDialog(rootPane, "Tiene una demora de mas de 2 meses en el pago", "Alerta",0);
+            */
             }
         }catch (CamposIncompletosExcepcion e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);

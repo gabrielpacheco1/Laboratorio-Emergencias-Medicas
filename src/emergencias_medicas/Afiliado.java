@@ -2,58 +2,86 @@
 package emergencias_medicas;
 
 
+import excepciones.TarifaNoEstablecidaExcepcion;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 
 public class Afiliado extends Persona {
     
-    private Calendar fechaUltPago;
+    public ArrayList <Pago> pagos= new ArrayList();
+    private Calendar fechaAlta;
     private int cantidadGrupoFamiliar;
-    //private ArrayList <Persona> grupoFamiliar;
     private static String tipo= "Afiliado";
-    private static final Float tarifa= 1000f;
-    private static final Float tarifaGF= 500f;
+    
     
     public Afiliado(){}
     
     public Afiliado(String nombre,String apellido,String dni,/*,Integer dia,Integer mes,Integer año*/
-            String sexo,Integer telefono,String direccion,Calendar fechaUltPago){
+            String sexo,Integer telefono,String direccion,Calendar fechaAlta, Pago pago){
         super(nombre,apellido,dni,direccion,telefono,sexo);
-        this.fechaUltPago=fechaUltPago;
+        
+        if(pago.getMonto()==0.0f){
+            throw new TarifaNoEstablecidaExcepcion("Tarifa no establecida.");
+        }
+        
+        this.fechaAlta=fechaAlta;
+        pagos.add(pago);
     }
 
-    public Float pagarTarifa(){
-        Float tarifaFinal;
-        tarifaFinal=this.getTarifa()+(this.cantidadGrupoFamiliar*this.getTarifaGF());
-        return tarifaFinal;
+
+    public int CalcularDeuda(Afiliado afi){   //Calcula si adeuda más de dos meses
+        Calendar cal= Calendar.getInstance();
+        Integer año= cal.get(Calendar.YEAR);
+        int resultado=0;
+        int tam= afi.pagos.size()-1;
+        int mesAlta= afi.getFechaAlta().get(Calendar.MONTH);
+        
+        if(año==afi.fechaAlta.get(Calendar.YEAR)){
+            int difMeses= cal.get(Calendar.MONTH)-mesAlta;
+            if((difMeses-tam)>2){
+                resultado=1;   //adeuda
+            }else
+                resultado=0;
+
+        }else{
+            int calculoMeses= 11-mesAlta;
+            int difMeses=calculoMeses+cal.get(Calendar.MONTH)+1;
+
+            if((difMeses-tam)>2){
+                resultado=1;    //adeuda
+            }else
+                resultado=0;
+        }
+        
+        return resultado;
+    }
+   
+    /**
+     * @return the fechaAlta
+     */
+    public Calendar getFechaAlta() {
+        return fechaAlta;
     }
 
     /**
-     * @return the fechaUltPago
+     * @param fechaAlta the fechaUltPago to set
      */
-    public Calendar getFechaUltPago() {
-        return fechaUltPago;
-    }
-
-    /**
-     * @param fechaUltPago the fechaUltPago to set
-     */
-    public void setFechaUltPago(Calendar fechaUltPago) {
-        this.fechaUltPago = fechaUltPago;
+    public void setFechaAlta(Calendar fechaAlta) {
+        this.fechaAlta= fechaAlta;
 
     }
     
     public String toString(){
 
-        if(fechaUltPago!=null){
-            Integer mes= fechaUltPago.get(Calendar.MONTH);
+        if(fechaAlta!=null){
+            Integer mes= fechaAlta.get(Calendar.MONTH);
             mes=mes+1; //Porque los meses se enumeran del 0 al 11
             return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". DNI: "+this.getDni()+
                     ". Grupo familiar: "+this.cantidadGrupoFamiliar+". Direccion: "+getDireccion()+". Telefono: "+getTelefono()
-                    +". Fecha de pago: "+fechaUltPago.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fechaUltPago.get(Calendar.YEAR));
+                    +". Fecha de alta: "+fechaAlta.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fechaAlta.get(Calendar.YEAR));
         }
-            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Grupo familiar: "+this.cantidadGrupoFamiliar+". Fecha de pago: No realizo pago");
+            return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Grupo familiar: "+this.cantidadGrupoFamiliar+". Fecha de alta: No realizo pago");
         
     }
 
@@ -78,17 +106,5 @@ public class Afiliado extends Persona {
         this.cantidadGrupoFamiliar = cantidadGrupoFamiliar;
     }
 
-    /**
-     * @return the tarifa
-     */
-    public static Float getTarifa() {
-        return tarifa;
-    }
-
-    /**
-     * @return the tarifaGF
-     */
-    public static Float getTarifaGF() {
-        return tarifaGF;
-    }
+   
 }

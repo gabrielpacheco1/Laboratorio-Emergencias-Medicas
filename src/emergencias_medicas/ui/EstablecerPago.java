@@ -3,6 +3,7 @@ package emergencias_medicas.ui;
 
 import emergencias_medicas.Afiliado;
 import emergencias_medicas.Gestor;
+import emergencias_medicas.Pago;
 import emergencias_medicas.Persona;
 import excepciones.ObjInexistenteExcepcion;
 import java.awt.Frame;
@@ -91,14 +92,9 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
         btnCalcular = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lblDeuda = new javax.swing.JLabel();
 
         jLabel1.setText("Documento");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         botonBuscar.setText("Buscar");
         botonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,10 +123,6 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,6 +143,15 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                     .addComponent(btnCalcular)
                     .addComponent(botonBuscar))
                 .addGap(40, 40, 40))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(lblDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,9 +161,11 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBuscar))
-                .addGap(55, 55, 55)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(lblDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,10 +177,6 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         BuscarAfiliado buscar = new BuscarAfiliado(principal, true, this.jTextField1, gestor);
@@ -197,10 +196,29 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                 if(persona instanceof Afiliado){
                     if(persona.getDni().equals(documento)){
                         Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                        if(afi.getFechaUltPago().get(Calendar.MONTH)!=mes)
-                            afi.setFechaUltPago(cal);
-                        else
-                            JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
+                        int tam= afi.pagos.size()-1;
+                        int mesAlta= afi.getFechaAlta().get(Calendar.MONTH);
+                        if(año==afi.getFechaAlta().get(Calendar.YEAR)){
+                            int difMeses= cal.get(Calendar.MONTH)-mesAlta;
+                            //gestor.calcularPago(afi);
+                            if(difMeses!=tam){
+                                Pago pago=new Pago(cal,gestor.calcularPago(afi));
+                                afi.pagos.add(pago);
+                                JOptionPane.showMessageDialog(rootPane, "Pago realizado", "Transacción correcta",1);
+                            }else
+                                JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
+  
+                        }else{
+                            int calculoMeses= 11-mesAlta;
+                            int difMeses=calculoMeses+cal.get(Calendar.MONTH)+1;
+                        
+                            if(difMeses!=tam){
+                                Pago pago=new Pago(cal,gestor.calcularPago(afi));
+                                afi.pagos.add(pago);
+                                JOptionPane.showMessageDialog(rootPane, "Pago realizado", "Transacción correcta",1);
+                            }else
+                                JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
+                        }
                     }
                 }
             } 
@@ -216,7 +234,11 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
- 
+        this.botonAceptar.setEnabled(true);
+        Calendar cal = Calendar.getInstance();
+        Integer año= cal.get(Calendar.YEAR);
+        Integer mes= cal.get(Calendar.MONTH);
+        
         String documento= jTextField1.getText();
         
         for (int i = 0; i < gestor.getPersonas().size(); i++)
@@ -225,8 +247,27 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
             if(persona instanceof Afiliado){
                 if(persona.getDni().equals(documento)){
                     Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                    Float tar= afi.pagarTarifa();
-                    this.jLabel3.setText(Float.toString(tar));
+                    int tam= afi.pagos.size()-1;
+                    int mesAlta= afi.getFechaAlta().get(Calendar.MONTH);
+                    if(año==afi.getFechaAlta().get(Calendar.YEAR)){
+                        int difMeses= cal.get(Calendar.MONTH)-mesAlta;
+                        this.lblDeuda.setText("Adeuda "+(difMeses-tam)+" mes(es)");
+                        
+                        if(difMeses!=tam)
+                            this.jLabel3.setText(Float.toString(gestor.calcularPago(afi)));
+                        else
+                            this.botonAceptar.setEnabled(false);
+                        
+                    }else{                              //si es distinto el año
+                        int calculoMeses= 11-mesAlta;
+                        int difMeses=calculoMeses+cal.get(Calendar.MONTH)+1;
+                        this.lblDeuda.setText("Adeuda "+(difMeses-tam)+" mes(es)");
+                        
+                        if(difMeses!=tam)
+                            this.jLabel3.setText(Float.toString(gestor.calcularPago(afi))); 
+                        else
+                            this.botonAceptar.setEnabled(false);
+                    }    
                 }
             }
         }
@@ -256,5 +297,6 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblDeuda;
     // End of variables declaration//GEN-END:variables
 }

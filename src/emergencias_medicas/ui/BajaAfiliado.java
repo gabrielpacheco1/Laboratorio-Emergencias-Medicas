@@ -3,6 +3,8 @@ package emergencias_medicas.ui;
 
 import emergencias_medicas.Afiliado;
 import emergencias_medicas.Gestor;
+import emergencias_medicas.GrupoFamiliar;
+import emergencias_medicas.Persona;
 import excepciones.ObjInexistenteExcepcion;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
@@ -104,11 +106,23 @@ public class BajaAfiliado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
+        int numEliminados=0;
         try{
             String documento= txtDocumento.getText();
         
+            for (int i = 0; i < gestor.getPersonas().size(); i++){
+                Persona persona=(Persona) gestor.getPersonas().get(i);
+                if(persona instanceof GrupoFamiliar){   
+                    GrupoFamiliar grupo=(GrupoFamiliar)gestor.getPersonas().get(i);
+                    if(grupo.getAfiliado().getDni().equals(documento)){    
+                        gestor.eliminarPersona(grupo.getDni());
+                        numEliminados= numEliminados+1;
+                    }    
+                }
+            }
+            
             gestor.eliminarPersona(documento);
-        
+            JOptionPane.showMessageDialog(rootPane, "Se eliminaron "+numEliminados+" miembros del grupo familiar", "Alerta",0);
             this.dispose();
         }catch(ObjInexistenteExcepcion ex){
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);

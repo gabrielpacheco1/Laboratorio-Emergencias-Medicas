@@ -120,6 +120,11 @@ public class FinSolicitud extends javax.swing.JInternalFrame {
         
         soli.setResultado(txtResultado.getText());
         
+        soli.getChofer().setEstado("Libre");
+        soli.getDoctor().setEstado("Libre");
+        soli.getEnfermero().setEstado("Libre");
+        soli.getMovil().setEstado("Libre");
+        
         this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 

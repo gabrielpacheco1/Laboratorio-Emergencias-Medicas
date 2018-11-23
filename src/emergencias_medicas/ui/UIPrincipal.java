@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import emergencias_medicas.Movil;
 import emergencias_medicas.Gestor;
-import emergencias_medicas.Pago;
+import emergencias_medicas.Tarifa;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
@@ -23,7 +23,7 @@ import javax.swing.JDesktopPane;
 public class UIPrincipal extends javax.swing.JFrame {
     
     private Gestor gestor;
-    private Pago pago;
+    private Tarifa pago;
 
     /**
      * Creates new form UI_Principal
@@ -59,7 +59,6 @@ public class UIPrincipal extends javax.swing.JFrame {
         mItmAltaSolicitud = new javax.swing.JMenu();
         Solicitud = new javax.swing.JMenuItem();
         finSolicitud = new javax.swing.JMenuItem();
-        RealizaPago = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         listaMoviles = new javax.swing.JMenuItem();
         listaSolicitud = new javax.swing.JMenuItem();
@@ -143,7 +142,7 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenu1.add(jMenu5);
 
-        Pago.setText("Pago");
+        Pago.setText("Establecer tarifa");
         Pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PagoActionPerformed(evt);
@@ -151,7 +150,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(Pago);
 
-        mItmPagoOriginal.setText("Pago original");
+        mItmPagoOriginal.setText("Realizar pago");
         mItmPagoOriginal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mItmPagoOriginalActionPerformed(evt);
@@ -161,14 +160,14 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        mItmAltaSolicitud.setText("Registro");
+        mItmAltaSolicitud.setText("Solicitud de Asistencia");
         mItmAltaSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mItmAltaSolicitudActionPerformed(evt);
             }
         });
 
-        Solicitud.setText("Solicitud");
+        Solicitud.setText("Nueva");
         Solicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SolicitudActionPerformed(evt);
@@ -176,21 +175,13 @@ public class UIPrincipal extends javax.swing.JFrame {
         });
         mItmAltaSolicitud.add(Solicitud);
 
-        finSolicitud.setText("Fin Solicitud");
+        finSolicitud.setText("Pendientes");
         finSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finSolicitudActionPerformed(evt);
             }
         });
         mItmAltaSolicitud.add(finSolicitud);
-
-        RealizaPago.setText("Realizar Pago");
-        RealizaPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RealizaPagoActionPerformed(evt);
-            }
-        });
-        mItmAltaSolicitud.add(RealizaPago);
 
         jMenuBar1.add(mItmAltaSolicitud);
 
@@ -244,7 +235,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_altaMovilActionPerformed
 
     private void PagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoActionPerformed
-        EstablecerBono ventana = new EstablecerBono(pago);
+        EstablecerBono ventana = new EstablecerBono(gestor);
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -337,15 +328,6 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_finSolicitudActionPerformed
 
-    private void RealizaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizaPagoActionPerformed
-        RealizarPago ventana = new RealizarPago(gestor);
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
-        ventana.show();
-    }//GEN-LAST:event_RealizaPagoActionPerformed
-
     private void listaSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaSolicitudActionPerformed
         ListaSolicitud ventana= new ListaSolicitud(gestor);
         jDesktopPane1.add(ventana);
@@ -371,7 +353,6 @@ public class UIPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Pago;
-    private javax.swing.JMenuItem RealizaPago;
     private javax.swing.JMenuItem Solicitud;
     private javax.swing.JMenuItem altaAfiliado;
     private javax.swing.JMenuItem altaEmpleado;

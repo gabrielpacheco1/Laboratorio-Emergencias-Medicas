@@ -1,49 +1,48 @@
 
 package emergencias_medicas;
 
+import java.util.Calendar;
 
 public class Pago {
+    private Calendar fecha;
+    private Float monto;
     
-    private Integer bonoAfi;
-    private Integer bonoFamilia;
+    public Pago (Calendar fecha, Float monto){
+        this.fecha=fecha;
+        this.monto=monto;
+    }
+
+    public String toString(){
+        Integer mes= (fecha.get(Calendar.MONTH))+1;
+        return ("Fecha de pago: "+fecha.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fecha.get(Calendar.YEAR)+
+                ". Monto: "+monto);
+    }
     
-    
-    public Pago(int bonoAfi,int bonoFamilia){
-        
-        this.bonoAfi=bonoAfi;
-        this.bonoFamilia=bonoFamilia;
+    /**
+     * @return the fecha
+     */
+    public Calendar getFecha() {
+        return fecha;
     }
 
     /**
-     * @return the bonoAfi
+     * @param fecha the fecha to set
      */
-    public Integer getBonoAfi() {
-        return bonoAfi;
+    public void setFecha(Calendar fecha) {
+        this.fecha = fecha;
     }
 
     /**
-     * @param bonoAfi the bonoAfi to set
+     * @return the monto
      */
-    public void setBonoAfi(Integer bonoAfi) {
-        this.bonoAfi = bonoAfi;
+    public Float getMonto() {
+        return monto;
     }
 
     /**
-     * @return the bonoFamilia
+     * @param monto the monto to set
      */
-    public Integer getBonoFamilia() {
-        return bonoFamilia;
+    public void setMonto(Float monto) {
+        this.monto = monto;
     }
-
-    /**
-     * @param bonoFamilia the bonoFamilia to set
-     */
-    public void setBonoFamilia(Integer bonoFamilia) {
-        this.bonoFamilia = bonoFamilia;
-    }
-
-    
-    
-    
-    
 }

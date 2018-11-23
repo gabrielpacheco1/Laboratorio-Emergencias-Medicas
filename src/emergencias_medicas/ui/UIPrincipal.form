@@ -81,7 +81,7 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="Pago">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pago"/>
+                <Property name="text" type="java.lang.String" value="Establecer tarifa"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PagoActionPerformed"/>
@@ -89,7 +89,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mItmPagoOriginal">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pago original"/>
+                <Property name="text" type="java.lang.String" value="Realizar pago"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItmPagoOriginalActionPerformed"/>
@@ -99,7 +99,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mItmAltaSolicitud">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registro"/>
+            <Property name="text" type="java.lang.String" value="Solicitud de Asistencia"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItmAltaSolicitudActionPerformed"/>
@@ -107,7 +107,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="Solicitud">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Solicitud"/>
+                <Property name="text" type="java.lang.String" value="Nueva"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SolicitudActionPerformed"/>
@@ -115,18 +115,10 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="finSolicitud">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fin Solicitud"/>
+                <Property name="text" type="java.lang.String" value="Pendientes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finSolicitudActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="RealizaPago">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Realizar Pago"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RealizaPagoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
