@@ -1,6 +1,8 @@
 
 package emergencias_medicas;
 
+import excepciones.CamposIncompletosExcepcion;
+
 public class Movil {
     private String marca;
     private String modelo;
@@ -9,7 +11,11 @@ public class Movil {
     private String estado;
     
     
-    public Movil(String marca,String modelo,Integer año,String patente){
+    public Movil(String marca,String modelo,Integer año,String patente)throws CamposIncompletosExcepcion{
+        if(marca.equals("")||modelo.equals("")||patente.equals("")){
+            throw new CamposIncompletosExcepcion("No rellenó todos los campos");
+        }
+        
         this.marca=marca;
         this.modelo=modelo;
         this.año=año;

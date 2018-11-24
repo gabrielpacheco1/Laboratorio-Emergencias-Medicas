@@ -7,9 +7,6 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String dni;   //cambio de Integer
-    private Integer diaNac;
-    private Integer mesNac;
-    private Integer añoNac;
     private String direccion;
     private Integer telefono;
     private String sexo;
@@ -18,8 +15,7 @@ public class Persona {
     
     public Persona(){}
     
-    public Persona(String nombre,String apellido,String dni,/*,Integer dia,Integer mes,Integer año*/
-            String direccion,Integer telefono,String sexo)throws CamposIncompletosExcepcion{
+    public Persona(String nombre,String apellido,String dni,String direccion,Integer telefono,String sexo)throws CamposIncompletosExcepcion{
         
         if(nombre.equals("")||apellido.equals("")||dni.equals("")||direccion.equals("")||sexo.equals("")){
             throw new CamposIncompletosExcepcion("No rellenó todos los campos");
@@ -27,9 +23,6 @@ public class Persona {
         this.nombre=nombre;
         this.apellido=apellido;
         this.dni=dni;
-//       this.dia=dia;
-//        this.mes=mes;
-//        this.año=año;
         this.direccion=direccion;
         this.telefono=telefono;
         this.sexo=sexo;
@@ -79,47 +72,7 @@ public class Persona {
         this.dni = dni;
     }
 
-    /**
-     * @return the diaNac
-     */
-    public Integer getDiaNac() {
-        return diaNac;
-    }
-
-    /**
-     * @param diaNac the diaNac to set
-     */
-    public void setDiaNac(Integer diaNac) {
-        this.diaNac = diaNac;
-    }
-
-    /**
-     * @return the mesNac
-     */
-    public Integer getMesNac() {
-        return mesNac;
-    }
-
-    /**
-     * @param mesNac the mesNac to set
-     */
-    public void setMesNac(Integer mesNac) {
-        this.mesNac = mesNac;
-    }
-
-    /**
-     * @return the añoNac
-     */
-    public Integer getAñoNac() {
-        return añoNac;
-    }
-
-    /**
-     * @param añoNac the añoNac to set
-     */
-    public void setAñoNac(Integer añoNac) {
-        this.añoNac = añoNac;
-    }
+    
 
     /**
      * @return the direccion

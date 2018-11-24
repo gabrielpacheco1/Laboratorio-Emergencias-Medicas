@@ -120,9 +120,13 @@ public class BajaEmpleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        String documento= txtDNI.getText();
+        try{
+            String documento= txtDNI.getText();
         
-        gestor.eliminarPersona(documento);
+            gestor.eliminarPersona(documento);
+        }catch(ObjInexistenteExcepcion ex){
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);
+        }
         
         this.dispose();
         

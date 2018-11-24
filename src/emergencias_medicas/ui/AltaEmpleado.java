@@ -183,19 +183,19 @@ public class AltaEmpleado extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             if (this.jComboBox1.getSelectedItem().equals("Doctor")){
-                Doctor doctor= new Doctor(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                Doctor doctor= new Doctor(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.getInteger(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
                 gestor.agregarPersona(doctor);
             
             }else if (this.jComboBox1.getSelectedItem().equals("Enfermero")){
-                Enfermero enfermero= new Enfermero(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                Enfermero enfermero= new Enfermero(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.getInteger(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
                 gestor.agregarPersona(enfermero);
             
             }else if (this.jComboBox1.getSelectedItem().equals("Administrativo")){
-                EmpleadosAdministractivos administrativo= new EmpleadosAdministractivos (this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                EmpleadosAdministractivos administrativo= new EmpleadosAdministractivos (this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.getInteger(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
                 gestor.agregarPersona(administrativo);
             
             }else if (this.jComboBox1.getSelectedItem().equals("Chofer")){
-                Chofer chofer= new Chofer(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.decode(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
+                Chofer chofer= new Chofer(this.txtNombre.getText(),this.txtApellido.getText(),this.txtDNI.getText(),this.txtDireccion.getText(),Integer.getInteger(this.txtTelefono.getText()),this.txtSexo.getText(),Integer.decode(this.txtCodigo.getText()));
                 gestor.agregarPersona(chofer);
             
             }

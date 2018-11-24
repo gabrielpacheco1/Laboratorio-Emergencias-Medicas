@@ -7,6 +7,7 @@ package emergencias_medicas.ui;
 
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Movil;
+import excepciones.CamposIncompletosExcepcion;
 import excepciones.ObjExistenteExcepcion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -143,6 +144,8 @@ public class AltaMovil extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta",0);
         }catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(rootPane, "Error en el formato del año\n\nIngrese un año válido", "Alerta",0);            
+        }catch(CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
         }
         
         this.dispose();

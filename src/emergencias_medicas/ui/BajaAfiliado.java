@@ -138,10 +138,7 @@ public class BajaAfiliado extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Alerta", 0);
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(rootPane, "No realizó selección", "Alerta", 0);
-        }/* finally {
-            this.jLabel2.setText((afiliado!=null)?afiliado.getNombre():"Inexistente");
-        }*/
-        //this.jLabel2.setText(String.valueOf(afiliado.getDni()));
+        }
     }
     
 

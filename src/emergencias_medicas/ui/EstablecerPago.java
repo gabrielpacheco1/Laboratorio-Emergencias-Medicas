@@ -94,6 +94,8 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         lblDeuda = new javax.swing.JLabel();
 
+        setClosable(true);
+
         jLabel1.setText("Documento");
 
         botonBuscar.setText("Buscar");

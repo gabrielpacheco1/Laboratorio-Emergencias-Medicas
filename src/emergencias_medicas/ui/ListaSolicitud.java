@@ -49,6 +49,8 @@ public class ListaSolicitud extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tab = new javax.swing.JTable();
 
+        setClosable(true);
+
         tab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

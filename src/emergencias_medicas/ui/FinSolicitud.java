@@ -3,6 +3,7 @@ package emergencias_medicas.ui;
 
 import emergencias_medicas.Gestor;
 import emergencias_medicas.Solicitud_Asistencia;
+import excepciones.CamposIncompletosExcepcion;
 import excepciones.ObjInexistenteExcepcion;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
@@ -114,7 +115,8 @@ public class FinSolicitud extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String orden= txtOrden.getText();
+        try{
+            String orden= txtOrden.getText();
         
         Solicitud_Asistencia soli= gestor.getSolicitud(orden);
         
@@ -124,6 +126,11 @@ public class FinSolicitud extends javax.swing.JInternalFrame {
         soli.getDoctor().setEstado("Libre");
         soli.getEnfermero().setEstado("Libre");
         soli.getMovil().setEstado("Libre");
+        }catch(CamposIncompletosExcepcion e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Alerta",0);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(rootPane, "No realizó selección", "Alerta", 0);
+        }
         
         this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed

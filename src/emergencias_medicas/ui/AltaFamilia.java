@@ -213,7 +213,7 @@ public class AltaFamilia extends javax.swing.JInternalFrame {
                     if(persona.getDni().equals(documento)){
                         Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
                         GrupoFamiliar familia = new GrupoFamiliar(txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),
-                        txtDireccion.getText(),Integer.decode(txtTelefono.getText()), txtSexo.getText(),afi);
+                        txtDireccion.getText(),Integer.getInteger(txtTelefono.getText()), txtSexo.getText(),afi);
                         gestor.agregarPersona (familia);
                         afi.setCantidadGrupoFamiliar(afi.getCantidadGrupoFamiliar()+1);
                         JOptionPane.showMessageDialog(rootPane, "Se agregó correctamente");
