@@ -15,7 +15,7 @@ public class Pago {
     public String toString(){
         Integer mes= (fecha.get(Calendar.MONTH))+1;
         return ("Fecha de pago: "+fecha.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fecha.get(Calendar.YEAR)+
-                ". Monto: "+monto);
+                ".      Monto total: "+monto);
     }
     
     /**

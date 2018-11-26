@@ -198,14 +198,14 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                 if(persona instanceof Afiliado){
                     if(persona.getDni().equals(documento)){
                         Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                        int tam= afi.pagos.size()-1;
+                        int tam= afi.getPagos().size()-1;
                         int mesAlta= afi.getFechaAlta().get(Calendar.MONTH);
                         if(año==afi.getFechaAlta().get(Calendar.YEAR)){
                             int difMeses= cal.get(Calendar.MONTH)-mesAlta;
                             //gestor.calcularPago(afi);
                             if(difMeses!=tam){
                                 Pago pago=new Pago(cal,gestor.calcularPago(afi));
-                                afi.pagos.add(pago);
+                                afi.getPagos().add(pago);
                                 JOptionPane.showMessageDialog(rootPane, "Pago realizado", "Transacción correcta",1);
                             }else
                                 JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
@@ -216,7 +216,7 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
                         
                             if(difMeses!=tam){
                                 Pago pago=new Pago(cal,gestor.calcularPago(afi));
-                                afi.pagos.add(pago);
+                                afi.getPagos().add(pago);
                                 JOptionPane.showMessageDialog(rootPane, "Pago realizado", "Transacción correcta",1);
                             }else
                                 JOptionPane.showMessageDialog(rootPane, "Ya realizó el pago correspondiente al mes actual", "Alerta",0);
@@ -249,7 +249,7 @@ public class EstablecerPago extends javax.swing.JInternalFrame {
             if(persona instanceof Afiliado){
                 if(persona.getDni().equals(documento)){
                     Afiliado afi=(Afiliado) gestor.getPersonas().get(i);
-                    int tam= afi.pagos.size()-1;
+                    int tam= afi.getPagos().size()-1;
                     int mesAlta= afi.getFechaAlta().get(Calendar.MONTH);
                     if(año==afi.getFechaAlta().get(Calendar.YEAR)){
                         int difMeses= cal.get(Calendar.MONTH)-mesAlta;

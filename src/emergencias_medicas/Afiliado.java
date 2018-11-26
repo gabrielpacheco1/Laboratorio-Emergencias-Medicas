@@ -8,8 +8,9 @@ import java.util.Calendar;
 
 
 public class Afiliado extends Persona {
+
     
-    public ArrayList <Pago> pagos= new ArrayList();
+    private ArrayList <Pago> pagos= new ArrayList();
     private Calendar fechaAlta;
     private int cantidadGrupoFamiliar;
     private static String tipo= "Afiliado";
@@ -34,7 +35,7 @@ public class Afiliado extends Persona {
         Calendar cal= Calendar.getInstance();
         Integer año= cal.get(Calendar.YEAR);
         int resultado=0;
-        int tam= afi.pagos.size()-1;
+        int tam= afi.getPagos().size()-1;
         int mesAlta= afi.getFechaAlta().get(Calendar.MONTH);
         
         if(año==afi.fechaAlta.get(Calendar.YEAR)){
@@ -57,6 +58,13 @@ public class Afiliado extends Persona {
         return resultado;
     }
    
+    /**
+     * @return the pagos
+     */
+    public ArrayList <Pago> getPagos() {
+        return pagos;
+    }
+    
     /**
      * @return the fechaAlta
      */
@@ -83,6 +91,11 @@ public class Afiliado extends Persona {
         }
             return ("Nombre: "+this.getNombre()+" "+this.getApellido()+". Documento: "+this.getDni()+". Grupo familiar: "+this.cantidadGrupoFamiliar+". Fecha de alta: No realizo pago");
         
+    }
+    
+    public String toStringFecha(){
+        Integer mes= fechaAlta.get(Calendar.MONTH)+1;
+        return (fechaAlta.get(Calendar.DAY_OF_MONTH)+"/"+mes+"/"+fechaAlta.get(Calendar.YEAR));
     }
 
     /**

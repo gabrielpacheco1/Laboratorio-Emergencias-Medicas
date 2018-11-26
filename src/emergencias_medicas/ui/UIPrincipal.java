@@ -54,11 +54,13 @@ public class UIPrincipal extends javax.swing.JFrame {
         bajaAfiliado = new javax.swing.JMenuItem();
         bajaMovil = new javax.swing.JMenuItem();
         bajaEmpleado = new javax.swing.JMenuItem();
-        Pago = new javax.swing.JMenuItem();
-        mItmPagoOriginal = new javax.swing.JMenuItem();
         mItmAltaSolicitud = new javax.swing.JMenu();
         Solicitud = new javax.swing.JMenuItem();
         finSolicitud = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        Pago = new javax.swing.JMenuItem();
+        mItmPagoOriginal = new javax.swing.JMenuItem();
+        mItmPagos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         listaMoviles = new javax.swing.JMenuItem();
         listaSolicitud = new javax.swing.JMenuItem();
@@ -142,22 +144,6 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenu1.add(jMenu5);
 
-        Pago.setText("Establecer tarifa");
-        Pago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PagoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Pago);
-
-        mItmPagoOriginal.setText("Realizar pago");
-        mItmPagoOriginal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItmPagoOriginalActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mItmPagoOriginal);
-
         jMenuBar1.add(jMenu1);
 
         mItmAltaSolicitud.setText("Solicitud de Asistencia");
@@ -184,6 +170,34 @@ public class UIPrincipal extends javax.swing.JFrame {
         mItmAltaSolicitud.add(finSolicitud);
 
         jMenuBar1.add(mItmAltaSolicitud);
+
+        jMenu2.setText("Pagos");
+
+        Pago.setText("Establecer tarifa");
+        Pago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Pago);
+
+        mItmPagoOriginal.setText("Realizar pago");
+        mItmPagoOriginal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItmPagoOriginalActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mItmPagoOriginal);
+
+        mItmPagos.setText("Lista de pagos");
+        mItmPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItmPagosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mItmPagos);
+
+        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Lista");
 
@@ -346,6 +360,15 @@ public class UIPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_mItmPagoOriginalActionPerformed
 
+    private void mItmPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItmPagosActionPerformed
+        MostrarPagos ventana = new MostrarPagos(this, gestor);
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);              
+        ventana.show();
+    }//GEN-LAST:event_mItmPagosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +387,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem finSolicitud;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -372,6 +396,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem listaSolicitud;
     private javax.swing.JMenu mItmAltaSolicitud;
     private javax.swing.JMenuItem mItmPagoOriginal;
+    private javax.swing.JMenuItem mItmPagos;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getJDesktopPane1() {
